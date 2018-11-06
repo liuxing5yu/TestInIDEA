@@ -1,0 +1,31 @@
+package exception;
+
+class Annoyance extends Exception {
+}
+
+class Sneeze extends Annoyance {
+}
+
+/**
+ * 检验异常的抛出和捕捉
+ * @author 80953
+ *
+ */
+public class Human {
+
+	public static void main(String[] args) throws Exception {
+		try {
+			try {
+				throw new Sneeze();
+			} catch (Annoyance a) {
+				System.out.println("Caught Annoyance");
+				throw a;
+			}
+		} catch (Sneeze s) {
+			System.out.println("Caught Sneeze");
+			return;
+		} finally {
+			System.out.println("Hello World!");
+		}
+	}
+}

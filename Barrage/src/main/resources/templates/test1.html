@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>弹幕</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript" src="../static/js/jquery.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.barrager.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var i = 0;
+            $('canvas').barrager([{"msg": "1111111111"}]);
+            $('#qc').click(function () {
+                $('canvas').barrager("clear");
+            });
+
+            setInterval(function () {
+                $('canvas').barrager([{"msg": i++}]);
+            }, 20);
+        })
+    </script>
+
+</head>
+
+<body>
+<button id="qc" type="button" style="width: 100px;height: 50px;font-size: 30px;">清除</button>
+<br>
+<canvas style="width: 100%;height: 100%;background-color: rgba(0,0,0,0.2)">你的浏览器不支持canvas</canvas>
+</body>
+
+</html>

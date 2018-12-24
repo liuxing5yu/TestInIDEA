@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function foo() {
+            var x = 10;
+            return function bar() {
+                console.log(x);
+            }
+        }
+
+        var x = 5;
+        var barReference = foo();
+        barReference();
+    </script>
+
+    <script>
+        function Dog(sound) {
+            this.sound = sound;
+        }
+
+        Dog.prototype.talk = function (name) {
+            console.log(this.sound + "---" + name);
+        }
+        dog = new Dog("wolf");
+        dog.talk("fido");
+
+        function Cat(sound) {
+            this.sound = sound;
+        }
+
+        Cat.prototype.talk = function (name) {
+            console.log(this.sound + "---" + name);
+        }
+        cat = new Cat("meow");
+        cat.talk("felix");//meow---felix
+        cat.talk.call(dog, "felix2"); //wolf---felix2
+    </script>
+</head>
+<body>
+
+</body>
+</html>

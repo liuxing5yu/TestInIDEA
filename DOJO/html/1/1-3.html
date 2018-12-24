@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fun with Dojo!</title>
+
+    <link rel="stylesheet" type="text/css"
+          href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+
+    <script
+            type="text/javascript"
+            src="../../js/dojo/1.14.2/dojo/dojo.js"
+            djConfig="isDebug:true">
+    </script>
+
+    <style type="text/css">
+        .blue {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="d1" class="blue">A div with id=d1 and class=blue</div>
+<div id="d2">A div with id=d2</div>
+<div id="d2">Another div with id=d2</div>
+<div id="d4">A div with id=d3.
+    <span id="s1">
+                This sentence is in a span that's contained in d1.
+                The span's id is s1.
+            </span>
+</div>
+<form name="foo" action="">
+    A form with name="foo"
+</form>
+<div id="foo">
+     A div with id=foo
+</div>
+</body>
+</html>

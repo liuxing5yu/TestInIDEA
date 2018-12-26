@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fun with Back!</title>
+
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+
+
+    <script type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"
+            djConfig="dojoIframeHistoryUrl:'2-7.html',isDebug:true"></script>
+
+    <script type="text/javascript">
+
+        dojo.require("dojo.back");
+        dojo.back.init();
+
+        dojo.addOnLoad(function () {
+
+            initialState = {
+                back: function () {
+                    debugger;
+                    console.log("Back to initial state");
+                }
+            };
+            state1 = {
+                back: function () {
+                    debugger;
+                    console.log("Back to state 1");
+                },
+                forward: function () {
+                    debugger;
+                    console.log("Forward to state 1");
+                },
+                changeUrl: true // could also be an id like "state1"
+            };
+            state2 = {
+                back: function () {
+                    debugger;
+                    console.log("Back to state 2");
+                },
+                forward: function () {
+                    debugger;
+                    console.log("Forward to state 2");
+                },
+                changeUrl: true // could also be an id like "state2"
+            };
+
+            //set the initial state and move forward two steps in history
+            dojo.back.setInitialState(initialState);
+            dojo.back.addToHistory(state1);
+            dojo.back.addToHistory(state2);
+        });
+    </script>
+    <head>
+<body>
+Press the back button and have a look at the console.
+</body>
+</html>

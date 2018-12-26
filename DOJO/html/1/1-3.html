@@ -17,6 +17,20 @@
             color: blue;
         }
     </style>
+    <script>
+        dojo.addOnLoad(function () {
+
+            /* Any content that depends upon dojo.require statements goes here... */
+
+            var nodes = dojo.query("div");
+            var idx = 0;
+            dojo.forEach(nodes, function(node, idx){
+                node.onclick = function(){
+                    console.debug("clicked:", idx);
+                }
+            });
+        });
+    </script>
 </head>
 <body>
 <div id="d1" class="blue">A div with id=d1 and class=blue</div>

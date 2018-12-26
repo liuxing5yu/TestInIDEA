@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试JS中的隐藏方法</title>
+    <script>
+        function OA(){
+            this.a = "b";
+
+            this.sayHello1 = function () {
+                console.log("OA sayHello1");
+            }
+
+            function sayHello2() {
+                console.log("OA sayHello2");
+            }
+
+            this._sayHello3 = function () {
+                console.log("OA sayHello3");
+            }
+
+            function _sayHello4() {
+                console.log("OA sayHello4");
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

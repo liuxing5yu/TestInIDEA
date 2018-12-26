@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fun With Fibonacci!</title>
+
+    <script type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"
+            djConfig="modulePaths:{dtdg:'../../../../html/2/dtdg'}"></script>
+
+    <script type="text/javascript">
+        dojo.require("dtdg.foo");
+        /* we use an addOnLoad block even though it's all local as a matter of habit*/
+        dojo.addOnLoad(function () {
+            dojo.body().innerHTML = "guess what? fibonacci(5) = " + dtdg.foo.fibonacci(5);
+        });
+    </script>
+
+</head>
+<body>
+</body>
+</html>

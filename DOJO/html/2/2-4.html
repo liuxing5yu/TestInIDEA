@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fun With Fibonacci!</title>
+
+    <script src="https://cdn.bootcss.com/dojo/1.10.4/dojo.js" djConfig="baseUrl:'./'"></script>
+
+    <script type="text/javascript">
+        dojo.registerModulePath("dtdg", "./dtdg");
+        dojo.require("dtdg.foo");
+        /* at this point, the dojo.require is being satisfied asynchronously
+        because we're using an Xdomain build of Dojo. Better wrap any references
+        to dtdg.foo in an addOnLoad block */
+
+        dojo.addOnLoad(function () {
+            dojo.body().innerHTML = "guess what? fibonacci(5) = " + dtdg.foo.fibonacci(5);
+        });
+    </script>
+
+</head>
+<body>
+</body>
+</html>

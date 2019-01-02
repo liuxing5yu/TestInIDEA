@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fun with Animation!</title>
+    <style type="text/css">
+        @import "../../js/dojo/1.14.2/dojo/resources/dojo.css";
+
+        .box {
+            width: 200px;
+            height: 200px;
+            margin: 5px;
+            background: blue;
+            text-align: center;
+        }
+    </style>
+    <script
+            type="text/javascript"
+            src="../../js/dojo/1.14.2/dojo/dojo.js">
+    </script>
+    <script type="text/javascript">
+        /*
+        dojo.addOnLoad(function () {
+            var box = dojo.byId("box");
+            dojo.connect(box, "onclick", function (evt) {
+                var anim = dojo.fadeOut({node: box});
+                anim.play();
+            });
+        });
+        */
+        dojo.addOnLoad(function () {
+            var box = dojo.byId("box");
+            dojo.connect(box, "onclick", function (evt) {
+                var easingFunc = function (x) {
+                    return Math.pow(x, 10);
+                }
+                dojo.fadeOut({
+                    node: box,
+                    easing: easingFunc,
+                    duration: 3000
+                }).play();
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="box" class="box">Fade Me Out</div>
+</body>
+</html>

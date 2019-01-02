@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animation Station</title>
+    <style type="text/css">
+        @import "../../js/dojo/1.14.2/dojo/resources/dojo.css";
+
+        .box {
+            width: 200px;
+            height: 200px;
+            margin: 5px;
+            background: blue;
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+    <script type="text/javascript">
+
+        dojo.require("dojo.fx");
+
+        /*
+        dojo.addOnLoad(function () {
+            var box = dojo.byId("box");
+            dojo.connect(box, "onclick", function (evt) {
+                dojo.fx.slideTo({
+                    node: box,
+                    top: "200",
+                    left: "200"
+                }).play();
+            });
+        });
+        */
+
+        /*
+        dojo.addOnLoad(function () {
+            var box = dojo.byId("box");
+            dojo.connect(box, "onclick", function (evt) {
+                var easing = function (x) {
+                    return x;
+                };
+                var a1 = dojo.fx.slideTo({
+                    node: box,
+                    easing: easing,
+                    duration: 1000,
+                    top: "150",
+                    left: "300"
+                });
+                var a2 = dojo.fx.slideTo({
+                    node: box,
+                    easing: easing,
+                    duration: 400,
+                    top: "20",
+                    left: "350"
+                });
+                var a3 = dojo.fx.slideTo({
+                    node: box,
+                    easing: easing,
+                    duration: 800,
+                    top: "350",
+                    left: "400"
+                });
+                dojo.fx.chain([a1, a2, a3]).play();
+            });
+        });
+        */
+        /*
+        dojo.addOnLoad(function () {
+            var box = dojo.byId("box");
+            dojo.connect(box, "onclick", function (evt) {
+                var a1 = dojo.fx.slideTo({
+                    node: box,
+                    top: "150",
+                    left: "300"
+                });
+                var a2 = dojo.fadeOut({
+                    node: box
+                });
+                dojo.fx.combine([a1, a2]).play();
+            });
+        });
+        */
+
+        /*
+        dojo.addOnLoad(function () {
+            var box = dojo.byId("box");
+            dojo.connect(box, "onclick", function (evt) {
+
+                //chain together some slides
+                var a1 = dojo.fx.slideTo({
+                    node: box,
+                    top: "150",
+                    left: "300"
+                });
+                var a2 = dojo.fx.slideTo({
+                    node: box,
+                    top: "20",
+                    left: "350"
+                });
+                var a3 = dojo.fx.slideTo({
+                    node: box,
+                    top: "350",
+                    left: "400"
+                });
+                var slides = dojo.fx.chain([a1, a2, a3]);
+
+                //chain together some fades
+                var a1 = dojo.fadeIn({
+                    node: box
+                });
+                var a2 = dojo.fadeOut({
+                    node: box
+                });
+                var a3 = dojo.fadeIn({
+                    node: box
+                });
+                var fades = dojo.fx.chain([a1, a2, a3]);
+
+                //now combine the two chains together
+                dojo.fx.combine([slides, fades]).play();
+
+            });
+        });
+        */
+
+        dojo.addOnLoad(function () {
+            var box = dojo.byId("box");
+            var t = new dojo.fx.Toggler({
+                node: box,
+                showDuration: 1000,
+                hideDuration: 1000
+            });
+            var visible = true;
+            dojo.connect(box, "onclick", function (evt) {
+                if (visible)
+                    t.hide();
+                else
+                    t.show();
+
+                visible = !visible;
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="box" class="box">Slide Me</div>
+</body>
+</html>

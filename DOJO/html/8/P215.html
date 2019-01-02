@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>More Fun With Animation!</title>
+    <style type="text/css">
+        @import "../../js/dojo/1.14.2/dojo/resources/dojo.css";
+
+        .box {
+            width: 200px;
+            height: 200px;
+            margin: 5px;
+            text-align: center;
+        }
+
+        .blueBox {
+            background: blue;
+            float: left;
+        }
+
+        .redBox {
+            background: red;
+            float: left;
+        }
+
+        .greenBox {
+            background: green;
+            clear: left;
+        }
+    </style>
+    <script
+            type="text/javascript"
+            src="../../js/dojo/1.14.2/dojo/dojo.js">
+    </script>
+    <script type="text/javascript">
+        dojo.addOnLoad(function () {
+            var box = dojo.byId("box1");
+            var anim;
+            dojo.connect(box, "onclick", function (evt) {
+                anim = dojo.animateProperty({
+                    node: box,
+                    duration: 10000,
+                    rate: 1000,
+                    easing: function (x) {
+                        console.log("easing " + x);
+                        return x * x;
+                    },
+                    properties: {
+                        height: {start: '200', end: '400'},
+                        width: {start: '200', end: '400'}
+                    }
+                });
+                anim.play();
+                dojo.connect(dojo.byId("stop"), "onclick", function (evt) {
+                    anim.stop(true);
+                    console.log("status is ", anim.status());
+                });
+                dojo.connect(dojo.byId("pause"), "onclick", function (evt) {
+                    anim.pause();
+                    console.log("status is ", anim.status());
+                });
+                dojo.connect(dojo.byId("play"), "onclick", function (evt) {
+                    anim.play();
+                    console.log("status is ", anim.status());
+                });
+                dojo.connect(dojo.byId("goTo50"), "onclick", function (evt) {
+                    anim.gotoPercent(0.5, true);
+                    console.log("advanced to 50%");
+                });
+            });
+        });
+
+    </script>
+</head>
+<body>
+<div>
+    <button id="stop" style="margin : 5px">stop</button>
+    <button id="pause" style="margin : 5px">pause</button>
+    <button id="play" style="margin : 5px">play</button>
+    <button id="goTo50" style="margin : 5px">50 percent</button>
+</div>
+<div id="box1" class="box blueBox">Click Here</div>
+<div id="box2" class="box redBox"></div>
+<div id="box2" class="box greenBox"></div>
+</body>
+</html>

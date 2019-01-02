@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fun with Deferreds!</title>
+
+    <script type="text/javascript"
+            src="../../js/dojo/1.14.2/dojo/dojo.js">
+    </script>
+
+    <script type="text/javascript">
+        dojo.addOnLoad(function () {
+            var d = new dojo.Deferred;
+
+            //Add some callbacks
+            d.addCallback(
+                function (result) {
+                    console.log("Callback 1 says that the result is ", result);
+                    return result;
+                }
+            );
+
+            d.addCallback(
+                function (result) {
+                    console.log("Callback 2 says that the result is ", result);
+                    return result;
+                }
+            );
+
+            //Add some errbacks
+            d.addErrback(
+                function (result) {
+                    console.log("Errback 1 says that the result is ", result);
+                    return result;
+                }
+            );
+
+            d.addErrback(
+                function (result) {
+                    console.log("Errback 2 says that the result is ", result);
+                    return result;
+                }
+            );
+
+            //Fire off an asynchronous request, which returns a Deferred
+            request = dojo.xhrGet({
+                url: "http://localhost:63342/TestInIDEA/DOJO/html/1/1-2.html",
+                timeout: 5000,
+                load: function (response, ioArgs) {
+                    console.log("Load response is:", response);
+                    console.log("Executing the callback chain now...");
+
+                    //inject our Deferred's callback chain
+                    d.callback(response, ioArgs);
+
+                    //allow the xhrGet's Deferred chain to continue..
+                    return response;
+                },
+                error: function (response, ioArgs) {
+                    console.log("Error!", response);
+                    console.log("Executing the errback chain now...");
+
+                    //inject our Deferred's errback chain
+                    d.errback(response, ioArgs);
+
+                    //allow the xhrGet's Deferred chain to continue..
+                    return response;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+XHR request in progress. You have about 3 seconds to cancel it.
+<button onclick="javascript:request.cancel(  )">Cancel</button>
+</body>
+</html>

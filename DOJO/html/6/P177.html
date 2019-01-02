@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"
+
+    ></script>
+
+    <script type="text/javascript">
+        /* Require in Dojo's i18n utilities first... */
+        dojo.require("dojo.i18n");
+
+        dojo.registerModulePath("dtdg", "./dtdg");
+        dojo.registerModulePath("psychic", "./dtdg/psychic");
+
+        /* Then, require in your various translations */
+        dojo.requireLocalization("psychic", "readings");
+
+        function predictFuture(  ) {
+            /* Deep inside of your predictFuture function somewhere... */
+            var future= dojo.i18n.getLocalization("psychic", "readings").reading101;
+            return future;
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

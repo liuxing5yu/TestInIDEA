@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animation + Drag and Drop = Fun!</title>
+
+    <script type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+    <script type="text/javascript">
+        dojo.require("dojo.fx");
+        dojo.require("dojo.dnd.move");
+        dojo.addOnLoad(function () {
+            var move = new dojo.dnd.Moveable(dojo.byId("ball"));
+            var coords;
+            dojo.subscribe("/dnd/move/start", function (e) {
+                // when drag starts, save the coords
+                coords = dojo.coords(e.node);
+            });
+
+            //now use the coords to control where the image slides back
+            dojo.subscribe("/dnd/move/stop", function (e) {
+                dojo.fx.slideTo({
+                    node: e.node,
+                    top: coords.t,
+                    left: coords.l,
+                    duration: 1200,
+                    easing: function (x) {
+                        return Math.pow(x, 5);
+                    }
+                }).play();
+            });
+        });
+    </script>
+</head>
+<body>
+<!-- Insert any image into the page here in place of ball.png -->
+<img style="position : absolute; left : 300px; top : 300px;" id="ball" src="../../img/ball.jpg"/>
+</body>
+</html>

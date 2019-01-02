@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fun with Behavior!</title>
+
+    <link rel="stylesheet" type="text/css"
+          href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <script
+            type="text/javascript"
+            src="../../js/dojo/1.14.2/dojo/dojo.js"
+            djConfig="isDebug:true"
+    ></script>
+
+    <script type="text/javascript">
+        dojo.require("dojo.behavior");
+
+        dojo.addOnLoad(function () {
+            /* Pass a behavior Object into dojo.behavior.
+           This object is automatically added once the page loads*/
+            dojo.behavior.add({
+
+                /* The behavior Object is keyed by any combination of CSS
+               selectors, which can map to a single behavior or a
+collection of
+               behaviors */
+
+                /* Mapping a key to a function is equivalent to mapping
+to {found
+                : function(node) { ... } } */
+                ".container": function (node) {
+                    //apply some generic styling
+
+                    dojo.style(node, {
+                        border: "solid 1px",
+                        background: "#eee"
+                    });
+                },
+
+                /* Map the key to a collection of behaviors */
+                "#list > li": {
+                    /* DOM events work just like dojo.connect, allowing
+you to act
+                    on the event */
+                    onmouseover: function (evt) {
+                        dojo.style(evt.target,
+                            "background", "yellow");
+                    },
+                    onmouseout: function (evt) {
+                        dojo.style(evt.target,
+                            "background", "");
+                    },
+
+                    /* String values are published as topics */
+                    onclick: "/dtdg/behavior/example/click",
+
+                    /* "found" is a general purpose handler that allows
+                     manipulation of the node*/
+                    found: function (node) {
+                        dojo.style(node, "cursor",
+                            "pointer")
+                    }
+                }
+            });
+
+            dojo.behavior.apply();
+
+            /* Somewhere, out there...a subscription is set up... */
+            dojo.subscribe("/dtdg/behavior/example/click", function (evt) {
+                console.log(evt.target.innerHTML, "was clicked");
+            });
+        });
+    </script>
+    <head>
+
+<body>
+<div class="container" style="width:300px">
+    Grocery List:
+    <ul id="list">
+        <li>Bananas</li>
+        <li>Milk</li>
+        <li>Eggs</li>
+        <li>Orange Juice</li>
+        <li>Frozen Pizzas</li>
+    </ul>
+</div>
+</body>
+</html>

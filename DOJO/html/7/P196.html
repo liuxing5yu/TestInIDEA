@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fun with Source!</title>
+    <link rel="stylesheet" type="text/css"
+          href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css" />
+    <link rel="stylesheet" type="text/css"
+          href="../../js/dojo/1.14.2/dojo/resources/dojo.css" />
+    <link rel="stylesheet" type="text/css"
+          href="../../js/dojo/1.14.2/dojo/resources/dnd.css" />
+    <script
+            type="text/javascript"
+            djConfig="parseOnLoad:true"
+            src="../../js/dojo/1.14.2/dojo/dojo.js">
+    </script>
+
+    <script type="text/javascript">
+        dojo.require("dojo.dnd.Source");
+        dojo.require("dojo.parser");
+    </script>
+</head>
+<body>
+<div dojoType="dojo.dnd.Source" class="container">
+    <div class="dojoDndItem">foo</div>
+    <div class="dojoDndItem">bar</div>
+    <div class="dojoDndItem">baz</div>
+    <div class="dojoDndItem">quux</div>
+</div>
+</body>
+</html>

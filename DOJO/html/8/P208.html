@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>More Fun With Animation!</title>
+    <style type="text/css">
+        @import "../../js/dojo/1.14.2/dojo/resources/dojo.css";
+
+        .box {
+            width: 200px;
+            height: 200px;
+            margin: 5px;
+            text-align: center;
+        }
+
+        .blueBox {
+            background: blue;
+            float: left;
+        }
+
+        .redBox {
+            background: red;
+            float: left;
+        }
+
+        .greenBox {
+            background: green;
+            clear: left;
+        }
+    </style>
+    <script
+            type="text/javascript"
+            src="../../js/dojo/1.14.2/dojo/dojo.js">
+    </script>
+    <script type="text/javascript">
+
+        dojo.addOnLoad(function () {
+            var box = dojo.byId("box1");
+            dojo.connect(box, "onclick", function (evt) {
+                dojo.animateProperty({
+                    node: box,
+                    //duration: 3000,
+                    duration: 10000,
+                    rate: 1000,
+                    //easing: function (x) {return x * x;},
+                    easing : function(x) {return Math.pow(Math.sin(4*x),2);},
+                    properties: {
+                        height: {start: '200', end: '400'},
+                        width: {start: '200', end: '400'}
+                    }
+                }).play();
+            });
+        });
+
+    </script>
+</head>
+<body>
+<div id="box1" class="box blueBox">Click Here</div>
+<div id="box2" class="box redBox"></div>
+<div id="box2" class="box greenBox"></div>
+</body>
+</html>

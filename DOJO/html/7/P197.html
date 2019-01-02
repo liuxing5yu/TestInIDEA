@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fun with Source!</title>
+    <link rel="stylesheet" type="text/css"
+          href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="../../js/dojo/1.14.2/dojo/resources/dnd.css"/>
+    <script
+            type="text/javascript"
+            djConfig="parseOnLoad:true"
+            src="../../js/dojo/1.14.2/dojo/dojo.js">
+    </script>
+
+    <script type="text/javascript">
+        dojo.require("dojo.dnd.Source");
+        dojo.require("dojo.parser");
+    </script>
+</head>
+<body>
+<div dojoType="dojo.dnd.Source" horizontal=true class="container">
+    <span class="dojoDndItem ">foo</span>
+    <span class="dojoDndItem ">bar</span>
+    <span class="dojoDndItem ">baz</span>
+    <span class="dojoDndItem ">quux</span>
+
+    <script type="dojo/method" event="creator" args="item,hint">
+            // override the creator function and return the appropriate type
+            var node = dojo.doc.createElement("span");
+            node.id = dojo.dnd.getUniqueId(  );
+            node.className = "dojoDndItem";
+            node.innerHTML = "<strong style='color: red'>Custom</strong>  "+item;
+            return {node: node, data: item, type: ["text"]};
+
+    </script>
+
+</div>
+<div dojoType="dojo.dnd.Target" horizontal=true class="container"></div>
+</body>
+</html>

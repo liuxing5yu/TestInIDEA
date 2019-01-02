@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fun with ItemFileReadStore!</title>
+    <script type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js" djConfig="parseOnLoad:true"></script>
+    <script type="text/javascript">
+        dojo.require("dojo.parser");
+        dojo.require("dojo.data.ItemFileReadStore");
+    </script>
+
+    <script>
+        dojo.addOnLoad(function () {
+            var spanishCoffeeItem;
+            coffeeStore.fetchItemByIdentity({
+                identity: "Spanish",
+                onItem: function (item, request) {
+                    //capture the item...or do something with it
+                    spanishCoffeeItem = item;
+                    console.log("onItem", item);
+
+                    //like get its description...
+                    console.log(coffeeStore.getValue(spanishCoffeeItem, "description")); //Very dark brown...
+
+                    //or get its name...
+                    console.log(coffeeStore.getValue(spanishCoffeeItem, "name")); // Spanish
+
+                    //in this case, the name and label are the same...
+                    console.log(coffeeStore.getLabel(spanishCoffeeItem)); // Spanish
+                    //if you had an item and didn't know what its identity was...
+                    console.log(coffeeStore.getIdentity(spanishCoffeeItem)); //Spanish
+                },
+                onError: function (item, request) {
+                    /* Handle the error... */
+                    console.log("onError", item);
+                }
+            });
+
+            // // now do something with the spanishCoffeeItem variable...
+            //
+            // //like get its description...
+            // coffeeStore.getValue(spanishCoffeeItem, "description"); //Very dark brown...
+            //
+            // //or get its name...
+            // coffeeStore.getValue(spanishCoffeeItem, "name"); // Spanish
+            //
+            // //in this case, the name and label are the same...
+            // coffeeStore.getLabel(spanishCoffeeItem); // Spanish
+            // //if you had an item and didn't know what its identity was...
+            // coffeeStore.getIdentity(spanishCoffeeItem); //Spanish
+        });
+    </script>
+</head>
+<body>
+<div dojoType="dojo.data.ItemFileReadStore" url="../../data/coffee.json" jsId="coffeeStore"></div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+    <script type="text/javascript">
+        dojo.addOnLoad(function () {
+            var blue = new dojo.Color("#0000ff"); //could also have used "blue"
+
+            var red = new dojo.Color([255, 0, 0]);
+
+            var purple = dojo.blendColors(blue, red, 0.5);
+            dojo.style("foo", "background", purple.toCss());
+        });
+    </script>
+</head>
+<body>
+<div id="foo" style="width:200px; height:200px; padding:5px;"></div>
+
+
+<div style="width:200px; height:200px; padding:5px; background:rgba(0,0,255,0.5)"></div>
+
+<div style="position:absolute; left:50px; top:300px; width:200px; height:200px; padding:5px; background:rgba(255,0,0,0.5)"></div>
+</body>
+</html>

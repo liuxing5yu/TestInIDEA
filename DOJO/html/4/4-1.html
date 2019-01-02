@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fun with Deferreds!</title>
+
+    <script type="text/javascript"
+            src="../../js/dojo/1.14.2/dojo/dojo.js">
+    </script>
+
+    <script type="text/javascript">
+        dojo.addOnLoad(function () {
+
+            //Fire off an asynchronous request, which returns a Deferred
+            var d = dojo.xhrGet({
+                url: "http://localhost:63342/TestInIDEA/DOJO/html/1/1-2.html",
+                timeout: 5000,
+                load: function (response, ioArgs) {
+                    console.log("Load response is:", response);
+                    console.log("Executing the callback chain now...");
+                    //throw new Erro(111);
+                    return response;
+                },
+                error: function (response, ioArgs) {
+                    console.log("Error!", response);
+                    console.log("Executing the errback chain now...");
+                    return response;
+                }
+            });
+
+            console.log("xhrGet fired. Waiting on callbacks or errbacks");
+
+            //Add some callbacks
+            d.addCallback(
+                function (result) {
+                    console.log("Callback 1 says that the result is ", result);
+                    return result;
+                }
+            );
+
+            d.addCallback(
+                function (result) {
+                    console.log("Callback 2 says that the result is ", result);
+                    return result;
+                }
+            );
+
+            //Add some errbacks
+            d.addErrback(
+                function (result) {
+                    console.log("Errback 1 says that the result is ", result);
+                    return result;
+                }
+            );
+
+            d.addErrback(
+                function (result) {
+                    console.log("Errback 2 says that the result is ", result);
+                    return result;
+                }
+            );
+        });
+    </script>
+</head>
+<body>
+Check the Firebug console.
+</body>
+</html>

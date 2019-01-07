@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+    <script>
+        dojo.addOnLoad(function () {
+            dojo.declare("Foo", null, {
+
+                preamble: function () {
+                    console.log("preamble", arguments);
+                },
+
+                constructor: function () {
+                    console.log("constructor", arguments);
+                },
+
+                postscript: function () {
+                    console.log("postscript", arguments);
+                }
+            });
+
+            var foo = new Foo(100); //calls through to preamble, constructor, and postscript
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

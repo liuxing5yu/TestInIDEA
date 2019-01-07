@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>Fun with Button Clicking!</title>
+
+
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css"/>
+
+    <script djConfig="parseOnLoad:true" type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+
+    <script type="text/javascript">
+        dojo.require("dojo.parser");
+        dojo.require("dijit.form.Button");
+
+        dojo.addOnLoad(function () {
+            dojo.connect(dojo.byId("foo"), "onclick", function (evt) {
+                console.log("connect fired for DOM Node onclick");
+            });
+
+            dojo.connect(dijit.byId("foo"), "onclick", function (evt) {
+                console.log("connect fired for dijit onclick");    //never!
+            });
+
+            dojo.connect(dijit.byId("foo"), "onClick", function (evt) {
+                console.log("connect fired for dijit onClick");
+            });
+        });
+    </script>
+    <head>
+<body class="tundra">
+<button id="foo" dojoType="dijit.form.Button" onclick="foo">click me
+    <script type="dojo/method" event="onClick" args="evt">
+        console.log("Button fired onClick");
+    </script>
+</button>
+</body>
+</html>

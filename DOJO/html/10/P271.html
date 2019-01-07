@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+    <script>
+        dojo.addOnLoad(function () {
+            //Plain old JavaScript Function object defined here.
+            function Point(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+
+            dojo.extend(Point, {
+                x: 0,
+                y: 0,
+                toString: function () {
+                    return "x=" + this.x + " y=" + this.y;
+                }
+            });
+
+            dojo.declare(
+                "Shape",
+                null,
+                {
+                    //Clearly define members first thing, but initialize them all in
+                    //the Dojo constructor. Never initialize a Function object here
+                    //in this associative array unless you want it to be shared by
+                    //*all* instances of the class, which is generally not the case.
+
+                    //A common convention is to use a leading underscore to denote "private" members
+
+                    _color: "",
+                    _owners: null,
+                    // _owners: [0],
+
+                    //Dojo provides a specific constructor for classes. This is it.
+                    //Note that this constructor will be executed with the very same
+                    //arguments that are passed into Circle's constructor
+                    //function -- even though we make no direct call to this
+                    //superclass constructor.
+
+                    constructor: function (color) {
+                        this._color = color;
+                        this._owners = [0]; //See comment below about initializing objects
+
+                        console.log("Created a shape with color", this._color, "owned by", this._owners);
+                    },
+
+                    getColor: function () {
+                        return this._color;
+                    },
+                    addOwner: function (oid) {
+                        this._owners.push(oid);
+                    },
+                    getOwners: function () {
+                        return this._owners;
+                    }
+
+                    //Don't leave trailing commas after the last element. Not all
+                    //browsers are forgiving (or provide meaningful error messages).
+                    //Tattoo this comment on the back of your hand.
+                }
+            );
+
+            //Important Convention:
+            //For single inheritance chains, list the superclass's args first in the
+            //subclass's constructor, followed by any subclass specific arguments.
+
+            //The subclass's constructor gets called with the full argument chain, so
+            //it gets set up properly there, and assuming you purposefully do not
+            //manipulate the superclass's arguments in the subclass's constructor,
+            //everything works fine.
+
+            //Remember that the first argument to dojo.declare is a string and the
+            //second is a Function object.
+            dojo.declare(
+                "Circle",
+                Shape,
+                {
+                    _radius: 0,
+                    _area: 0,
+                    _point: null,
+
+                    constructor: function (color, x, y, radius) {
+                        this._radius = radius;
+                        this._point = new Point(x, y);
+                        this._area = Math.PI * radius * radius;
+
+                        //Note that the inherited member _color is already defined
+                        //and ready to use here!
+                        console.log("Circle's inherited color is " + this._color);
+                    },
+
+                    getArea: function () {
+                        return this._area;
+                    },
+                    getCenter: function () {
+                        return this._point;
+                    }
+                }
+            );
+
+            console.log("Circle.prototype", Circle.prototype);
+
+            console.log("Circle 1, coming up...");
+            c1 = new Circle("red", 1, 1, 100);
+            console.log("c1.getCenter()", c1.getCenter());
+            console.log("c1.getArea()", c1.getArea());
+            console.log("c1.getOwners()", c1.getOwners());
+            console.log("c1.addOwner(23)");
+            c1.addOwner(23);
+            console.log("c1.getOwners()", c1.getOwners());
+
+            console.log("Circle 2, coming up...");
+            c2 = new Circle("yellow", 10, 10, 20);
+            console.log("c2.getCenter()", c2.getCenter());
+            console.log("c2.getArea()", c2.getArea());
+            console.log("c2.getOwners()", c2.getOwners());
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

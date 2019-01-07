@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>Hello Parser</title>
+
+    <!-- pull in the standard CSS that styles the stock dijits -->
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css"/>
+
+    <script djConfig="parseOnLoad:false" type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+
+    <script type="text/javascript">
+        dojo.require("dojo.parser");
+        dojo.require("dijit.form.Button");
+        dojo.addOnLoad(function () {
+            dojo.parser.parse(); //manually parse after the page loads
+        });
+    </script>
+    <head/>
+<body class="tundra">
+<button dojoType="dijit.form.Button">Sign Up!</button>
+</body>
+</html>

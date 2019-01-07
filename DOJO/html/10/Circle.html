@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+    <script>
+        dojo.addOnLoad(function () {
+
+            // 典型的JS类
+            /*
+            function Shape(centerX, centerY, color) {
+                this.centerX = centerX;
+                this.centerY = centerY;
+                this.color = color;
+            };
+
+            // Create an instance
+            s = new Shape(10, 20, "blue");
+            */
+
+            //***********************************************************
+
+
+            // DOJO的JS对象
+            // Create a Function object
+            /*
+            function Shape() {
+            }
+
+            // Extend its prototype with some reasonable defaults
+            dojo.extend(Shape, {
+                centerX: 0,
+                centerY: 0,
+                color: ""
+            });
+
+            s = new Shape();
+            */
+
+            //***********************************************************
+
+            /*
+            // 典型的JS创建子类
+
+            function Shape(centerX, centerY, color) {
+                this.centerX = centerX;
+                this.centerY = centerY;
+                this.color = color;
+            };
+
+            // Define a subclass
+            function Circle(centerX, centerY, color, radius) {
+                // Ensure the subclass properties are added to the superclass by first
+                //assigning the subclass a reference to the constructor function and then
+                //invoking the constructor function inside of the superclass.
+                this.base = Shape;
+                this.base(centerX, centerY, color);
+
+                // Assign the remaining custom property to the subclass
+                this.radius = radius;
+            };
+
+            // Explicitly chain the subclass's prototype to a superclass so that any new properties
+            //that are dynamically added to the superclass are reflected in subclasses
+            Circle.prototype = new Shape;
+
+            // Create an instance
+            c = new Circle(10, 20, "blue", 2);
+
+            //The circle IS-A shape
+            */
+
+            //***********************************************************
+            // 通过混入模式实现继承
+            /*
+            //Create a plain old Object to model a shape
+            var shape = {}
+
+            //Mix in whatever you need to make it "look like a shape and quack like a shape"
+            dojo.mixin(shape, {
+                centerX : 10,
+                centerY : 20,
+                color : "blue"
+            });
+            //later on you need something else. No problem, mix it right in
+            dojo.mixin(shape, {
+                radius : 2
+            });
+
+            //Now the shape HAS-A radius
+            */
+
+            //***********************************************************
+
+            // 委托模式实现继承
+            //Create a plain old Object
+            var shape = {}
+
+            //Mix in what you need for this instance
+            dojo.mixin(shape, {
+                centerX: 10,
+                centerY: 20,
+                color: "blue"
+            });
+
+            //delegate circle's responsibility for centerX, centerY, and color to shape
+            //mix in the radius directly
+            circle = dojo.delegate(shape, {
+                radius: 2
+            });
+
+            //***********************************************************
+
+            // dojo.declare实现基于类的继承
+            // "Declare" a Shape
+            dojo.declare(
+                "Shape", //The class name
+                null, //No ancestors, so null placeholds
+                {
+                    centerX: 0, // Attributes
+                    centerY: 0,
+                    color: "",
+
+                    // The constructor function that gets called via "new Shape"
+                    constructor(centerX, centerY, color) {
+                        this.centerX = centerX;
+                        this.centerY = centerY;
+                        this.color = color;
+                    }
+                }
+            );
+
+            // At this point, you could create an object instance through:
+            // var s = new Shape(10, 20, "blue");
+
+            // "Declare" a Circle
+            dojo.declare(
+                "Circle", //The class name
+                Shape, // The ancestor
+                {
+                    radius: 0,
+
+                    // The constructor function that gets called via "new Circle"
+                    constructor(centerX, centerY, color, radius) {
+                        // Shape's constructor is called automatically
+                        // with these same params. Note that it simply ignores
+                        // the radius param since it only used the first 3 named args
+                        this.radius = radius; //assign the Circle-specific argument
+                    }
+                }
+            );
+
+            // Params to the JavaScript constructor function get passed through
+            // to dojo.declare's constructor
+            c = new Circle(10, 20, "blue", 2);
+
+            debugger
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

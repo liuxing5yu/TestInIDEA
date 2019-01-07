@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+    <script>
+        dojo.addOnLoad(function () {
+            dojo.declare("Foo", null, {
+
+                constructor: function () {
+                    console.log("Foo constructor", arguments);
+                },
+
+                custom: function () {
+                    console.log("Foo custom", arguments);
+                }
+
+            });
+
+            dojo.declare("Bar", Foo, {
+
+                constructor: function () {
+                    console.log("Bar constructor", arguments);
+                },
+
+                custom: function () {
+                    //automatically call Foo's 'custom' method and pass in the same arguments,
+                    //though you could juggle them if need be
+                    this.inherited(arguments);
+                    //without this call, Foo.custom would never get called
+                    console.log("Bar custom", arguments);
+                }
+
+            });
+
+            var bar = new Bar(100);
+            bar.custom(4, 8, 15, 16, 23, 42);
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

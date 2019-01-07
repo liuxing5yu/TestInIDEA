@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="../../_static/js/dojo/../dijit/themes/claro/claro.css">
+
+    <script>dojoConfig = {parseOnLoad: true}</script>
+    <script src='../../_static/js/dojo/dojo.js'></script>
+
+    <script>
+        require(["dojo/ready", "dojo/on", "dijit/registry", "dojo/data/ItemFileReadStore", "dijit/form/ComboBox", "dijit/form/Button", "dojo/parser"], function (ready, on, registry) {
+            ready(function () {
+                // Now set up a linkage so that the store can be reloaded.
+                on(registry.byId("reloadButton2"), "click", function () {
+                    // Reset the url and call close.  Note this could be a different JSON file, but for this example, just
+                    // Showing how you would set the URL.
+                    reloadableStore2.url = "../../_static/js/dojo/..//dojox/data/tests/stores/countries.json";
+                    reloadableStore2.close();
+                });
+            });
+        });
+    </script>
+</head>
+<body class="claro">
+<div data-dojo-type="dojo/data/ItemFileReadStore"
+     data-dojo-props="url:'../../_static/js/dojo/..//dojox/data/tests/stores/countries.json', urlPreventCache:true, clearOnClose:true"
+     data-dojo-id="reloadableStore2"></div>
+<div data-dojo-type="dijit/form/ComboBox" data-dojo-props="store:reloadableStore2, searchAttr:'name'"></div>
+<div id="reloadButton2" data-dojo-type="dijit/form/Button">Reload DataStore</div>
+</body>
+</html>

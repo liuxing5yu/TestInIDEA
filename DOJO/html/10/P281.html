@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fun with Multiple Inheritance!</title>
+
+    <script type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+    <script type="text/javascript">
+        dojo.addOnLoad(function () {
+            dojo.declare("Foo", null, {
+                preamble: function () {
+                    console.log("Foo preamble: ", arguments);
+                },
+
+                constructor: function () {
+                    console.log("Foo constructor: ", arguments);
+                }
+            });
+
+            dojo.declare("Bar", null, {
+                preamble: function () {
+                    console.log("Bar preamble: ", arguments);
+                },
+
+                constructor: function () {
+                    console.log("Bar constructor: ", arguments);
+                }
+            });
+
+            dojo.declare("Baz", [Foo, Bar], {
+                preamble: function () {
+                    console.log("Baz preamble: ", arguments);
+                    return ["overridden", "baz", "arguments"];
+                },
+
+                constructor: function () {
+                    console.log("Baz constructor: ", arguments);
+                }
+            });
+
+            var obj = new Baz("baz", "arguments", "go", "here");
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

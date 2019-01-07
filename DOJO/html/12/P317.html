@@ -1,0 +1,45 @@
+<html>
+<head>
+    <title>Hello Parser</title>
+
+    <script type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+
+    <script type="text/javascript">
+        dojo.require("dijit._Widget");
+        dojo.addOnLoad(function () {
+            dojo.declare(
+                "dtdg.Foo", // the subclass
+                dijit._Widget, // the superclass
+                {
+                    /* Common construction methods in chronological order */
+                    constructor: function () {
+                        console.log("constructor");
+                    },
+                    postMixInProperties: function () {
+                        console.log("postMixInProperties");
+                    },
+                    postCreate: function () {
+                        console.log("postCreate");
+                    },
+
+                    /* Your clever logic goes here */
+                    talk: function () {
+                        console.log("I'm alive!");
+                    },
+
+                    /* Canonical destructor, implicitly called via destoryRecursive(  ) */
+                    uninitialize: function () {
+                        console.log("uninitialize");
+                    }
+                }
+            );
+            foo = new dtdg.Foo();
+            foo.talk();
+            foo.destroyRecursive(); /* Calls uninitialize, among other things */
+        });
+    </script>
+    <head/>
+<body>
+
+</body>
+</html>

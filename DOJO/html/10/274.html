@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function Foo() {
+        }
+
+        Foo.prototype.bar = [100];
+
+        //create two Foo instances
+        foo1 = new Foo;
+        foo2 = new Foo;
+
+        console.log(foo1.bar); // [100]
+        console.log(foo2.bar); // [100]
+
+
+        // This statement modifies the prototype, which is shared by all object instances...
+        foo1.bar.push(200);
+
+        //...so both instances reflect the change.
+        console.log(foo1.bar); // [100,200]
+        console.log(foo2.bar); // [100,200]
+    </script>
+</head>
+<body>
+
+</body>
+</html>

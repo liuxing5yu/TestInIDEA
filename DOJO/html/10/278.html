@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fun with Multiple Inheritance!</title>
+
+    <script type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+    <script type="text/javascript">
+        dojo.addOnLoad(function () {
+            //A perfectly good Dojo class with a reasonable constructor and no
+            //direct ancestors.
+            dojo.declare("Tiger", null, {
+                _name: null,
+                _species: null,
+
+                constructor: function (name) {
+                    this._name = name;
+                    this._species = "tiger";
+                    console.log("Created ", this._name, "the ", this._species);
+                }
+            });
+
+            //Another perfectly good Dojo class with a reasonable constructor
+            //and no direct ancestors.
+            dojo.declare("Lion", null, {
+                _name: null,
+                _species: null,
+
+                constructor: function (name) {
+                    this._name = name;
+                    this._species = "lion";
+                    console.log("Created ", this._name, " the ", this._species);
+                }
+            });
+
+            //A Dojo class with more than one ancestor. The first ancestor is the
+            //prototypical ancestor, while the second (and any subsequent
+            //functions) are mixins. Take special note that each of the
+            //superclass constructors execute before this subclass's constructor
+            //executes -- and there's really no way to get around that.
+            dojo.declare("Liger", [Tiger, Lion], {
+                _name: null,
+                _species: null,
+
+                constructor: function (name) {
+                    this._name = name;
+                    this._species = "liger";
+                    console.log("Created ", this._name, " the ", this._species);
+                }
+            });
+
+            lucy = new Liger("Lucy");
+            console.log(lucy);
+
+            debugger;
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

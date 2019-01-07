@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fun with ItemFileReadStore!</title>
+    <script type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js" djConfig="parseOnLoad:true"></script>
+    <script type="text/javascript">
+        dojo.require("dojo.parser");
+        dojo.require("dojo.data.ItemFileReadStore");
+    </script>
+
+    <script>
+        dojo.addOnLoad(function () {
+            dojo.connect(dojo.byId("btn"), "onclick", function () {
+                console.log("onclick...");
+                debugger;
+                coffeeStore.fetch({
+                    query: {name: "*"},
+                    onItem: function (item, request) {
+                        console.log("onItem..." + item);
+                    }
+                });
+            });
+
+        });
+    </script>
+</head>
+<body>
+<div dojoType="dojo.data.ItemFileReadStore" url="../../data/coffee2.json" jsId="coffeeStore"></div>
+<button id="btn">Button</button>
+</body>
+</html>

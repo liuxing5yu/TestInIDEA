@@ -1,0 +1,101 @@
+{
+  "identifier": "name",
+  "label": "name",
+  "items": [
+    {
+      "name": "Light Roasts",
+      "description": "A number of delicious light roasts",
+      "children": [
+        {
+          "_reference": "Light Cinnamon"
+        },
+        {
+          "_reference": "Cinnamon"
+        },
+        {
+          "_reference": "New England"
+        }
+      ]
+    },
+    {
+      "name": "Medium Roasts",
+      "description": "A number of delicious medium roasts",
+      "children": [
+        {
+          "_reference": "American or Light"
+        },
+        {
+          "_reference": "City, or Medium"
+        },
+        {
+          "_reference": "Full City"
+        },
+        {
+          "_reference": "Light French"
+        }
+      ]
+    },
+    {
+      "name": "Dark Roasts",
+      "description": "A number of delicious dark roasts",
+      "children": [
+        {
+          "_reference": "Light French"
+        },
+        {
+          "_reference": "French"
+        },
+        {
+          "_reference": "Dark French"
+        },
+        {
+          "_reference": "Spanish"
+        }
+      ]
+    },
+    {
+      "name": "Light Cinnamon",
+      "description": "Very light brown, dry , tastes like toasted grain with distinct sour tones, baked, bready"
+    },
+    {
+      "name": "Light Cinnamon",
+      "description": "Very light brown, dry , tastes like toasted grain with distinct sour tones, baked, bready"
+    },
+    {
+      "name": "Cinnamon",
+      "description": "Light brown and dry, still toasted grain with distinct sour acidy tones"
+    },
+    {
+      "name": "New England",
+      "description": "Moderate light brown , still sour but not bready, the norm for cheap Eastern U.S. coffee"
+    },
+    {
+      "name": "American or Light",
+      "description": "Medium light brown, the traditional norm for the Eastern U.S ."
+    },
+    {
+      "name": "City, or Medium",
+      "description": "Medium brown, the norm for most of the Western US, good to taste varietal character of a bean."
+    },
+    {
+      "name": "Full City",
+      "description": "Medium dark brown may have some slight oily drops, good for varietal character with a little bittersweet."
+    },
+    {
+      "name": "Light French",
+      "description": "Moderate dark brown with oily drops, light surface oil, more bittersweet, caramelly flavor, acidity muted."
+    },
+    {
+      "name": "French",
+      "description": "Dark brown oily, shiny with oil, also popular for espresso; burned undertones, acidity diminished"
+    },
+    {
+      "name": "Dark French",
+      "description": "Very dark brown very shiny, burned tones become more distinct, acidity almost gone."
+    },
+    {
+      "name": "Spanish",
+      "description": "Very dark brown, nearly black and very shiny, charcoal tones dominate, flat."
+    }
+  ]
+}

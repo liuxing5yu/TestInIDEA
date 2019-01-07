@@ -1,0 +1,50 @@
+<html>
+<head>
+    <title>Hello World, Take 1</title>
+
+    <!--
+       Because Dojo is being served from AOL's server, we have to provide a
+       couple of extra configuration options in djConfig as the XDomain
+       build (dojo.xd.js) gets loaded.
+
+       Thus, we associate the "dtdg" namespace w/ a particular relative path
+       on disk by specifying a baseUrl along with a collection of namespace mappings.
+       If we were using a local copy of Dojo, we could simply stick the
+       dtdg directory beside the dojo directory and it would have been
+       found automatically.
+
+       Specifying that dijits on the page should be parsed on page load
+       is normally standard for any situation in which you have dojoType tags in the page.
+
+    -->
+    <script type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"
+            djConfig="isDebug:true,parseOnLoad:true,modulePaths:{dtdg:'dtdg'}"></script>
+
+    <!--
+        You'll normally include the dojo.css file, followed by
+        any of your own specific style sheets. Remember that if you're not using
+        AOL's XDomain build, you'll want to point to your own local dojo.css file.
+    -->
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dojo/dtdg/themes/hello/hello.css"/>
+
+    <script type="text/javascript">
+        dojo.registerModulePath("dtdg", "./dtdg");
+        dojo.require("dojo.parser");
+
+        //Tell Dojo to fetch a dijit called HelloWorld that's associated
+        //with the dtdg namespace so that we can use it in the body.
+        //Dojo will use the values in djConfig.modulePaths to look up the location.
+        dojo.require("dtdg.HelloWorld");
+    </script>
+</head>
+<body>
+<!--
+This is where the Dojo parser swaps in the dijit from the
+dojo.require statement based on our parseOnLoad:true option.
+Any styles applied to the dijit are provided by the style sheets imported.
+-->
+<div dojoType="dtdg.HelloWorld"></div>
+</body>
+</html>

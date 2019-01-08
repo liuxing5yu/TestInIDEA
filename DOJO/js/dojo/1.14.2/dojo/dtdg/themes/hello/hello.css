@@ -1,3 +1,4 @@
-div.hello_class {
+span.hello_class {
+    cursor: pointer;
     color: #009900;
 }

@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title>Custom DateTextBox</title>
+
+    <link rel="stylesheet" type="text/css"
+          href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css"/>
+
+    <script
+            djConfig="parseOnLoad:false" ,
+            type="text/javascript"
+            src="../../js/dojo/1.14.2/dojo/dojo.js">
+    </script>
+    <script type="text/javascript">
+        dojo.require("dojo.parser");
+        dojo.require("dijit.form.DateTextBox");
+
+        dojo.addOnLoad(function () {
+            dojo.declare("dtdg.CustomDateTextBox", [dijit.form.DateTextBox], {
+                serialize: function (d, options) {
+                    return dojo.date.locale.format(d,
+                        {
+                            selector: 'date',
+                            datePattern: 'dd-MM-yyyy'
+                        }).toUpperCase();
+                }
+            });
+            dojo.parser.parse(dojo.body());
+        });
+    </script>
+</head>
+<body class="tundra">
+<form action="http://localhost:63342/TestInIDEA/DOJO/data/response.json" type="POST">
+    <input dojoType="dtdg.CustomDateTextBox" name="customDate"/>
+    <input type="submit" value="Submit"/>
+</form>
+</body>
+</html>

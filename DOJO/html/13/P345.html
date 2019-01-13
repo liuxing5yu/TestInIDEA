@@ -1,0 +1,71 @@
+<html>
+<head>
+    <title>Register for Spam</title>
+
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css"/>
+
+    <script djConfig="parseOnLoad:true" , type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+
+    <script type="text/javascript">
+        dojo.require("dojo.parser");
+        dojo.require("dijit.form.TextBox");
+
+        function help() {
+            var msg = "Basically, we want to sell your info to a 3rd party.";
+            alert(msg);
+            return false;
+        }
+
+        //simple validation
+        function validate() {
+            var f = document.getElementById("registration_form");
+
+            if (f.first.value == "" ||
+                f.last.value == "" ||
+                f.email.value == "") {
+                alert("All fields are required.");
+                return false;
+            }
+
+            return true;
+        }
+
+        function mixedCapitalization(value) {
+            var newValue = "";
+            var upper = true;
+
+            dojo.forEach(value.toLowerCase(), function (x) {
+                if (upper)
+                    newValue += x.toUpperCase();
+                else
+                    newValue += x;
+
+                upper = !upper;
+            });
+            console.log("newValue", newValue);
+            return newValue;
+        }
+    </script>
+    <head>
+<body class="tundra">
+<p>Just Use the form below to sign-up for our great offers:</p>
+<form id="registration_form"
+      method="POST"
+      onsubmit="javascript:return validate()"
+      action="http://localhost:8080/register/">
+
+    First Name:
+    <input dojoType="dijit.form.TextBox" id="first" propercase=true format="mixedCapitalization"
+           trim=true name="first" ><br>
+    Last Name:
+    <input dojoType="dijit.form.TextBox" propercase=true
+           trim=true name="last"><br>
+    Your Email:
+    <input dojoType="dijit.form.TextBox" length=25 name="email"><br>
+    <button type="submit">Sign Up!</button>
+    <button type="reset">Reset</button>
+    <button type="button" onclick="javascript:help()">Help</button>
+</form>
+</body>
+</html>

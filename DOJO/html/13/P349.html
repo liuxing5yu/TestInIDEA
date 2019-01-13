@@ -1,0 +1,98 @@
+<html>
+<head>
+    <title>Register for Spam</title>
+
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css"/>
+
+    <script djConfig="parseOnLoad:true" , type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+
+    <script type="text/javascript">
+        dojo.require("dojo.parser");
+        dojo.require("dijit.form.ValidationTextBox");
+        dojo.require("dijit.form.DateTextBox");
+        dojo.require("dijit.form.TimeTextBox");
+        dojo.require("dijit.form.NumberSpinner");
+        dojo.require("dijit.form.CurrencyTextBox");
+        dojo.require("dijit.form.ComboBox");
+        dojo.require("dijit.form.MultiSelect");
+        dojo.require("dijit.form.Textarea");
+    </script>
+
+    <!-- lots of ugly JavaScript was removed -->
+
+    <head>
+<body class="tundra">
+<p>Just Use the form below to sign-up for our great offers:</p>
+<form id="registration_form"
+      method="POST"
+      action="http://localhost:63342/TestInIDEA/DOJO/data/response.json">
+
+    First Name:
+    <input dojoType="dijit.form.ValidationTextBox"
+           properCase="true" trim=true required="true"
+           invalidMessage="Required." name="first"><br>
+
+    Last Name:
+    <input dojoType="dijit.form.ValidationTextBox"
+           properCase="true" trim=true required="true"
+           invalidMessage="Required." name="last"><br>
+
+    Your Email:
+    <input dojoType="dijit.form.ValidationTextBox"
+           promptMessage="Basically, we want to sell your info to a 3rd party."
+           regExp="[a-z0-9._%+-]+@[a-z0-9-]+\.[a-z]{2,4}" required
+           name="email"><br>
+
+    Best Day to call:
+    <input dojoType="dijit.form.DateTextBox"><br>
+
+    Best Time to call:
+    <input dojoType="dijit.form.TimeTextBox"><br>
+
+    dijit.form.NumberTextBox:
+    <input constraints="{pattern: '#.##%'}" dojoType="dijit.form.NumberTextBox"><br>
+
+    dijit.form.NumberSpinner:
+    <input dojoType="dijit.form.NumberSpinner" smallDelta="2" largeDelta="4"
+           constraints="{min:100,max:120}" value="100"><br>
+
+    dijit.form.CurrencyTextBox
+    <input dojoType="dijit.form.CurrencyTextBox"
+           constraints="{min:1,max:100,fractional:true}" currency="USD"/><br>
+
+    dijit.form.ComboBox
+    <select name="coffee" dojoType="dijit.form.ComboBox" autoComplete="true">
+        <option>Verona</option>
+        <option>French Roast</option>
+        <option>Breakfast Blend</option>
+        <option selected>Sumatra</option>
+
+        <script type="dojo/method" event="onChange" args="newValue">
+            console.log("value changed to ", newValue);
+        </script>
+    </select><br>
+
+    dijit.form.MultiSelect
+    <select multiple="true" name="foo" dojoType="dijit.form.MultiSelect"
+            style="height:100px; width:100px; border:3px solid black;">
+
+        <option value="TN" selected="true">Tennessee</option>
+        <option value="VA">Virginia</option>
+        <option value="WV">West Virginia</option>
+        <option value="OH">Ohio</option>
+
+    </select><br>
+
+    dijit.form.Textarea
+    <textarea dojoType="dijit.form.Textarea" style="width:300px">
+        One fish, two fish...
+    </textarea><br>
+
+    <button type="submit">Sign Up!</button>
+    <button type="reset">Reset</button>
+    <!-- tooltip message replaced need for help button -->
+
+</form>
+</body>
+</html>

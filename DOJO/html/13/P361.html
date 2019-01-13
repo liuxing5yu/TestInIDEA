@@ -1,0 +1,48 @@
+<html>
+<head>
+    <title>Pick a coffee roast, any coffee roast</title>
+
+    <link rel="stylesheet" type="text/css"
+          href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css"/>
+
+    <script
+            djConfig="parseOnLoad:true" ,
+            type="text/javascript"
+            src="../../js/dojo/1.14.2/dojo/dojo.js">
+    </script>
+
+    <script type="text/javascript">
+        dojo.require("dojo.parser");
+        dojo.require("dojo.data.ItemFileReadStore");
+        dojo.require("dijit.form.ComboBox");
+        dojo.require("dijit.form.Button");
+        dojo.require("dijit.form.Form");
+    </script>
+    <head>
+<body class="tundra">
+
+<div dojoType="dojo.data.ItemFileReadStore"
+     jsId="coffeeStore" url="../../data/coffee.json"></div>
+
+<form action="localhost" dojoType="dijit.form.Form">
+    <select name="coffee" dojoType="dijit.form.ComboBox"
+            store="coffeeStore" searchAttr="name">
+
+        <script type="dojo/method" event="onChange" args="newValue">
+                    console.log("value changed to ", newValue);
+                    var f = function(item) {
+                        console.log("new description is ",
+                          coffeeStore.getValue(item, "description")
+                        );
+                    };
+                    coffeeStore.fetchItemByIdentity(
+                        {identity : newValue, onItem : f}
+                    );
+        </script>
+    </select>
+    <button dojoTyype="dijit.form.Button">Submit</button>
+</form>
+</body>
+</html>

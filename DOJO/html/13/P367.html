@@ -1,0 +1,109 @@
+<html>
+<head>
+    <title>Register for Spam</title>
+
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css"/>
+
+    <script djConfig="parseOnLoad:true" , type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+
+    <script type="text/javascript">
+        dojo.require("dojo.parser");
+        dojo.require("dijit.form.Button");
+        dojo.require("dijit.form.ToggleButton");
+        dojo.require("dijit.form.CheckBox");
+        dojo.require("dijit.form.DropDownButton");
+        dojo.require("dijit.Menu");
+        dojo.require("dijit.MenuItem");
+        dojo.require("dijit.form.ComboButton");
+    </script>
+
+    <!-- lots of ugly JavaScript was removed -->
+
+    <head>
+<body class="tundra">
+<form id="registration_form" method="POST" action="http://localhost:63342/TestInIDEA/DOJO/data/response.json">
+    <button dojoTye="dijit.form.Button" type="submit">Sign Up!
+        <script type="dojo/method" event="onClick" args="evt">
+            alert("You just messed up...but it's too late now! Mwahahaha");
+        </script>
+    </button>
+    <button dojoTye="dijit.form.Button" type="reset">Reset</button>
+
+    <hr/>
+
+    dijit.form.ToggleButton
+    <button dojoType="dijit.form.ToggleButton">ToggleButton
+        <script type="dojo/method" event="onChange" args="newValue">
+             console.log(newValue);
+        </script>
+    </button>
+
+    <hr/>
+
+    dijit.form.CheckBox
+    <div name="confirmation" dojoType="dijit.form.CheckBox">
+    </div> I understand that you intend to spam me.<br>
+
+    <hr/>
+
+    <input name="spamFrequency" value="1 per day" dojoType="dijit.form.RadioButton">
+    1 per day<br>
+    <input name="spamFrequency" value="2 per day" dojoType="dijit.form.RadioButton">
+    2 per day<br>
+    <input name="spamFrequency" value="3+ per day" dojoType="dijit.form.RadioButton">
+    3+ per day<br>
+
+    <hr/>
+
+    <button dojoType="dijit.form.DropDownButton">
+        <span>Save...</span>
+        <div dojoType="dijit.Menu">
+            <div dojoType="dijit.MenuItem" label="Save">
+                <script type="dojo/method" event="onClick" args="evt">
+                console.log("you clicked", this.label);
+            </script>
+            </div>
+            <div dojoType="dijit.MenuItem" label="Save as...">
+                <script type="dojo/method" event="onClick" args="evt">
+                console.log("you clicked", this.label);
+            </script>
+            </div>
+            <div dojoType="dijit.MenuItem" label="Save to FTP...">
+                <script type="dojo/method" event="onClick" args="evt">
+                console.log("you clicked", this.label);
+            </script>
+            </div>
+        </div>
+    </button>
+
+    <hr/>
+
+    <button dojoType="dijit.form.ComboButton">
+        <span>Save</span>
+
+        <script type="dojo/method" event="onClick" args="evt">
+            console.log("you clicked the button itself");
+        </script>
+
+        <div name="foo" dojoType="dijit.Menu">
+            <div dojoType="dijit.MenuItem" label="Save">
+                <script type="dojo/method" event="onClick" args="evt">
+                console.log("you clicked", this.label);
+            </script>
+            </div>
+            <div dojoType="dijit.MenuItem" label="Save As...">
+                <script type="dojo/method" event="onClick" args="evt">
+                console.log("you clicked", this.label);
+            </script>
+            </div>
+            <div dojoType="dijit.MenuItem" label="Save to FTP...">
+                <script type="dojo/method" event="onClick" args="evt">
+                console.log("you clicked", this.label);
+            </script>
+            </div>
+        </div>
+    </button>
+</form>
+</body>
+</html>

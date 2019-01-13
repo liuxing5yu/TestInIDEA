@@ -1,0 +1,109 @@
+<html>
+<head>
+    <title>Register for Spam</title>
+
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css"/>
+
+    <script djConfig="parseOnLoad:true" , type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+
+    <script type="text/javascript">
+        dojo.require("dojo.parser");
+        dojo.require("dojo.number");
+        dojo.require("dijit.form.HorizontalSlider");
+        dojo.require("dijit.form.HorizontalRuleLabels");
+        dojo.require("dijit.form.VerticalSlider");
+        dojo.require("dijit.form.VerticalRuleLabels");
+        dojo.require("dijit.form.VerticalRule");
+    </script>
+
+    <!-- lots of ugly JavaScript was removed -->
+
+    <head>
+<body class="tundra">
+<form id="registration_form" method="POST" action="http://localhost:63342/TestInIDEA/DOJO/data/response.json">
+    dijit.form.HorizontalSlider
+    <div dojoType="dijit.form.HorizontalSlider" name="caffeine" value="100" maximum="175" minimum="2"
+         style="margin: 5px;width:300px; height: 20px;">
+
+        <script type="dojo/method" event="onChange" args="newValue">
+            console.log(newValue);
+        </script>
+    </div>
+
+    <hr/>
+
+    <div dojoType="dijit.form.HorizontalSlider" name="caffeine" value="100" maximum="175" minimum="2" showButtons="false"
+         style="margin: 5px;width:300px; height: 20px;">
+
+        <script type="dojo/method" event="onChange" args="newValue">
+            console.log(dojo.number.format(newValue,{places:1,pattern:'#mg'}));
+        </script>
+
+        <ol dojoType="dijit.form.HorizontalRuleLabels" container="topDecoration"
+            style="height:10px;font-size:75%;color:gray;" count="6">
+        </ol>
+
+        <div dojoType="dijit.form.HorizontalRule" container="topDecoration"
+             count=6 style="height:5px;">
+        </div>
+    </div>
+
+    <hr/>
+
+    <div dojoType="dijit.form.HorizontalSlider" name="caffeine" value="100" maximum="175" minimum="2" showButtons="false"
+         style="margin: 5px;width:300px; height: 20px;">
+
+        <script type="dojo/method" event="onChange" args="newValue">
+            console.log(newValue);
+        </script>
+        <ol dojoType="dijit.form.HorizontalRuleLabels" container="topDecoration"
+            style="height:10px;font-size:75%;color:gray;" count="6">
+        </ol>
+
+        <div dojoType="dijit.form.HorizontalRule" container="topDecoration"
+             count=6 style="height:5px;">
+        </div>
+
+        <div dojoType="dijit.form.HorizontalRule" container="bottomDecoration"
+             count=5 style="height:5px;">
+        </div>
+
+        <ol dojoType="dijit.form.HorizontalRuleLabels" container="bottomDecoration"
+            style="height:10px;font-size:75%;color:gray;">
+            <li>green<br>tea</li>
+            <li>coffee</li>
+            <li>red<br>bull</li>
+        </ol>
+    </div>
+
+    <hr/>
+
+    <div dojoType="dijit.form.VerticalSlider" name="caffeine" value="100" maximum="175" minimum="2" showButtons="false"
+         style="margin: 5px;width:75px; height: 300px;">
+
+        <script type="dojo/method" event="onChange" args="newValue">
+            console.log(newValue);
+        </script>
+        <ol dojoType="dijit.form.VerticalRuleLabels" container="leftDecoration"
+            style="height:300px;width:25px;font-size:75%;color:gray;" count="6">
+        </ol>
+
+        <div dojoType="dijit.form.VerticalRule" container="leftDecoration"
+             count=6 style="height:300px;width:5px;">
+        </div>
+
+        <div dojoType="dijit.form.VerticalRule" container="rightDecoration"
+             count=5 style="height:300px;width:5px;">
+        </div>
+
+        <ol dojoType="dijit.form.VerticalRuleLabels" container="rightDecoration"
+            style="height:300px;width:25px;font-size:75%;color:gray;">
+            <li>green&nbsp;tea</li>
+            <li>coffee</li>
+            <li>red&nbsp;bull</li>
+        </ol>
+    </div>
+</form>
+</body>
+</html>

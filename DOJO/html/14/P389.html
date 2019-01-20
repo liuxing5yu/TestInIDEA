@@ -1,0 +1,40 @@
+<html>
+<head><title>Fun with BorderContainer!</title>
+
+
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css"/>
+    <script djConfig="parseOnLoad:true" type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+
+    <script type="text/javascript">
+        dojo.require("dijit.layout.ContentPane");
+        dojo.require("dijit.layout.BorderContainer");
+        dojo.require("dojo.parser");
+    </script>
+</head>
+<body class="tundra">
+
+<div dojoType="dijit.layout.BorderContainer"
+     design="headline" style="height:500px;width:500px;border:solid 3px;">
+
+    <div dojoType="dijit.layout.ContentPane" region="top" style="background-color:blue;height:100px;" splitter="true"
+         minSize=10 maxSize=100>top
+    </div>
+
+    <div dojoType="dijit.layout.ContentPane" region="center">center</div>
+
+    <div dojoType="dijit.layout.ContentPane" region="bottom" style="background-color:red;height:100px;" splitter="true">
+        bottom
+    </div>
+
+    <div dojoType="dijit.layout.ContentPane" region="left" style="background-color:yellow;width:100px;" splitter="true">
+        left
+    </div>
+
+    <div dojoType="dijit.layout.ContentPane" region="right" style="background-color:green;width:100px;" splitter="true">
+        right
+    </div>
+
+</div>
+</body>
+</html>

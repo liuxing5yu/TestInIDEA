@@ -1,0 +1,56 @@
+<html>
+<head><title>Fun with BorderContainer!</title>
+
+    <link rel="stylesheet" type="text/css"
+          href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css"/>
+
+
+    <script
+            djConfig="parseOnLoad:true"
+            type="text/javascript"
+            src="../../js/dojo/1.14.2/dojo/dojo.js">
+    </script>
+
+    <script type="text/javascript">
+        dojo.require("dijit.layout.BorderContainer");
+        dojo.require("dijit.layout.ContentPane");
+        dojo.require("dojo.parser");
+        dojo.addOnLoad(function () {
+            //the BorderContainer
+            var bc = new dijit.layout.BorderContainer({
+                design: "headline",
+                style: "height:500px;width:500px;border:solid 3px"
+            }, "bc");
+
+            var topContentPane = new dijit.layout.ContentPane({
+                region: "top",
+                style: "background-color:blue;height:100px;",
+                splitter: true,
+                minSize: 10,
+                maxSize: 100
+            }, document.createElement("div"));
+
+            var centerContentPane = new dijit.layout.ContentPane({region: "center"}, document.createElement("div"));
+
+            var bottomContentPane = new dijit.layout.ContentPane({
+                region: "bottom",
+                style: "background-color:red;height:100px;",
+                splitter: true
+            }, document.createElement("div"));
+
+            bc.startup(); // do initial layout (even though there are no  children)
+
+            //now add the children.
+            bc.addChild(topContentPane);
+            bc.addChild(centerContentPane);
+            bc.addChild(bottomContentPane);
+
+        });
+    </script>
+    <head>
+<body class="tundra">
+<div id="bc"></div>
+</body>
+</html>

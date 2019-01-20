@@ -1,0 +1,23 @@
+<html>
+<head><title>Fun with ContentPane!</title>
+
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css"/>
+
+    <script djConfig="parseOnLoad:true" , type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+
+    <script type="text/javascript">
+        dojo.require("dijit.layout.ContentPane");
+    </script>
+
+</head>
+<body class="tundra">
+<div dojoType="dijit.layout.ContentPane">
+    Nothing special going on here.
+    <hr/>
+
+    <div id="foo" preload="false" dojoType="dijit.layout.ContentPane"
+         href="http://localhost:63342/TestInIDEA/DOJO/data/response.json"></div>
+</div>
+</body>
+</html>

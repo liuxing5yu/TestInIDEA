@@ -1,0 +1,40 @@
+<html>
+<head><title>Fun with BorderContainer!</title>
+
+    <link rel="stylesheet" type="text/css"
+          href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css"/>
+
+    <script
+            djConfig="parseOnLoad:true"
+            type="text/javascript"
+            src="../../js/dojo/1.14.2/dojo/dojo.js">
+    </script>
+
+    <script type="text/javascript">
+        dojo.require("dojo.parser");
+        dojo.require("dijit.layout.ContentPane");
+        dojo.require("dijit.layout.AccordionContainer");
+        dojo.require("dijit.layout.AccordionPane");
+    </script>
+    <head>
+<body class="tundra">
+
+<div id="foo" dojoType="dijit.layout.AccordionContainer"
+     style="width:150px; height:150px; margin:5px">
+    <div dojoType="dijit.layout.AccordionPane" title="one">
+        <p>One fish...</p>
+    </div>
+    <div dojoType="dijit.layout.AccordionPane" title="two">
+        <p>Two fish...</p>
+    </div>
+    <div dojoType="dijit.layout.AccordionPane" title="red">
+        <p>Red fish...</p>
+    </div>
+    <div id="blue" dojoType="dijit.layout.AccordionPane" title="blue">
+        <div dojoType="dijit.layout.ContentPane" href="http://localhost:63342/TestInIDEA/DOJO/data/response.json"></div>
+    </div>
+</div>
+</body>
+</html>

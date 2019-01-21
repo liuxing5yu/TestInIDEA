@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>Fun With Dialog!</title>
+
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css"/>
+    <script type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js" djConfig="parseOnLoad:true"></script>
+
+    <script type="text/javascript">
+        dojo.require("dojo.parser");
+        dojo.require("dijit.Dialog");
+        dojo.addOnLoad(function () {
+            dijit.byId("dialog").show();
+
+            console.log("1234");
+        });
+    </script>
+</head>
+<body class="tundra">
+<div id="dialog" dojoType="dijit.Dialog">
+    So foul and fair a day I have not seen...
+</div>
+</body>
+</html>

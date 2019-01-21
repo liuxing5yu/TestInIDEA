@@ -1,0 +1,26 @@
+{
+  "identifier": "name",
+  "label": "name",
+  "items": [
+    {
+      "name": "Programming Languages",
+      "children": [
+        {
+          "name": "JavaScript"
+        },
+        {
+          "name": "Python"
+        },
+        {
+          "name": "C++"
+        },
+        {
+          "name": "Erlang"
+        },
+        {
+          "name": "Prolog"
+        }
+      ]
+    }
+  ]
+}

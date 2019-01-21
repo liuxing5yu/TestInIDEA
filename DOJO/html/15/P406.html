@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>Fun With Dialog!</title>
+
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css"/>
+    <script type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js" djConfig="parseOnLoad:true"></script>
+
+    <script type="text/javascript">
+        dojo.require("dojo.parser");
+        dojo.require("dijit.Dialog");
+        dojo.require("dijit.form.TextBox");
+        dojo.require("dijit.form.DropDownButton");
+        dojo.require("dijit.ProgressBar");
+        dojo.require("dijit.ColorPalette");
+
+    </script>
+
+    <style type="text/css">
+        .customImage {
+            background-image: url('../../img/ball.jpg');
+            backgrond-repeat: no-repeat;
+            width: 120px;
+            height: 120px;
+        }
+    </style>
+</head>
+<body class="tundra">
+
+<button dojoType="dijit.form.DropDownButton" iconClass="customImage" showLabel="false">
+    <span>This label is hidden...</span>
+
+    <div dojoType="dijit.TooltipDialog">
+        <span>Tag this image...</span>
+        <div dojoType="dijit.form.TextBox"></div>
+    </div>
+</button>
+
+<hr/>
+Example: Typical indeterminate ProgressBar usage
+<div dojoType="dijit.ProgressBar" indeterminate="true" style="width:300px"></div>
+
+<hr/>
+<div dojoType="dijit.ColorPalette">
+    <script type="dojo/method" event="onChange" args="selectedColor">
+        /* hide the palette, perhaps? */
+        console.log(selectedColor);
+    </script>
+</div>
+
+</body>
+</html>

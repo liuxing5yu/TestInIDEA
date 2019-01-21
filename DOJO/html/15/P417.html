@@ -1,0 +1,45 @@
+<html>
+<head><title>Fun with ContentPane!</title>
+
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css"/>
+
+    <script djConfig="parseOnLoad:true" type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+
+    <script type="text/javascript">
+        dojo.require("dojo.parser");
+        dojo.require("dijit.TitlePane");
+        dojo.require("dijit.form.Textarea");
+
+        var ed = new dijit.form.Textarea({id: "titlePaneContent"});
+        dijit.byId("tp").setContent(ed.domNode);
+    </script>
+
+</head>
+<body class="tundra">
+
+<div dojoType="dijit.TitlePane" title="Grocery list:" style="width:300px">
+    <ul>
+        <li>Eggs</li>
+        <li>Milk</li>
+        <li>Bananas</li>
+        <li>Coffee</li>
+    </ul>
+</div>
+
+<hr/>
+
+
+<div id="tp" dojoType="dijit.TitlePane" style="width:300px">
+    <script type="dojo/connect" event="toggle">
+        if (!this.open) {
+            var t = dijit.byId("titlePaneContent").getValue();
+            if (t.length > 15)
+                t = t.slice(0,12)+"...";
+            this.setTitle(t);
+        }
+    </script>
+</div>
+
+</body>
+</html>

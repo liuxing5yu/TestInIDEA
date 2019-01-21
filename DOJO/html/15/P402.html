@@ -1,0 +1,21 @@
+<html>
+<head><title>Fun with ContentPane!</title>
+
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css"/>
+
+    <script djConfig="parseOnLoad:true" type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+
+    <script type="text/javascript">
+        dojo.require("dijit.Tooltip");
+    </script>
+
+</head>
+<body class="tundra">
+<span id="one">fish</span>, two <span id="two">fish</span>.
+
+<div dojoType="dijit.Tooltip" connectId="one,two">
+    A limbless cold-blooded vertebrate...<img src='../../img/ball.jpg'/>
+</div>
+</body>
+</html>

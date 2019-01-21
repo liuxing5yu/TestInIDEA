@@ -1,0 +1,50 @@
+<html>
+<head><title>Fun with ContentPane!</title>
+
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css"/>
+
+    <script djConfig="parseOnLoad:true" type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+
+    <script type="text/javascript">
+        dojo.require("dojo.parser");
+        dojo.require("dijit.InlineEditBox");
+        dojo.require("dijit.form.TextBox");
+
+    </script>
+
+</head>
+<body class="tundra">
+
+Dear <span dojoType="dijit.InlineEditBox" autoSave="false"
+           editor="dijit.form.TextBox">Valued Customer</span>:
+
+<div>We have received your request to be removed from our spam list. Not to
+    worry, we'll remove you when we're good and ready. In the meanwhile, please do
+    not hesitate to contact us with further complaints.
+</div>
+
+<div>Sincerely,</div>
+<span dojoType="dijit.InlineEditBox" autosave="false"
+      editor="dijit.form.TextBox">Customer Service</span>
+
+<hr/>
+
+Dear <span dojoType="dijit.InlineEditBox" autoSave="false"
+           editor="dijit.form.TextBox">Valued Customer</span>:
+
+<div dojoType="dijit.InlineEditBox" autoSave="false" editor="dijit.form.Textarea"
+     renderAsHtml="true">
+    Insert<br>
+    Form<br>
+    Letter<br>
+    Here<br>
+</div>
+
+<div>Sincerely,</div>
+
+<span dojoType="dijit.InlineEditBox"
+      autoSave="false" editor="dijit.form.TextBox">Customer Service</span>
+
+</body>
+</html>

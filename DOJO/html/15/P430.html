@@ -1,0 +1,34 @@
+<html>
+<head><title>Fun with ContentPane!</title>
+
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css"/>
+
+    <script djConfig="parseOnLoad:true" type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+
+    <script type="text/javascript">
+        dojo.require("dijit.Tree");
+        dojo.require("dijit.Editor");
+        dojo.require("dijit.form.Button");
+    </script>
+</head>
+<body class="tundra">
+<div style="margin:5px;background:#eee; height: 400px; width:525px">
+    <div id="editor" height="375px" dojoType="dijit.Editor">
+        When shall we three meet again?<br>
+        In thunder, lightning, or in rain?
+    </div>
+</div>
+<button dojoType="dijit.form.Button">Save
+    <script type="dojo/method" event="onClick" args="evt">
+        /* Save the value any old way you'd like */
+        console.log(dijit.byId("editor").getValue(  ));
+    </script>
+</button>
+<button dojoType="dijit.form.Button">Clear
+    <script type="dojo/method" event="onClick" args="evt">
+        dijit.byId("editor").replaceValue("");
+    </script>
+</button>
+</body>
+</html>

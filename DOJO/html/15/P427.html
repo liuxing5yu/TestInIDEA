@@ -1,0 +1,24 @@
+<html>
+<head><title>Fun with ContentPane!</title>
+
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css"/>
+
+    <script djConfig="parseOnLoad:true" type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+
+    <script type="text/javascript">
+        dojo.require("dojo.parser");
+        dojo.require("dojo.data.ItemFileReadStore");
+        dojo.require("dijit.Tree");
+
+    </script>
+
+</head>
+<body class="tundra">
+<div dojoType="dojo.data.ItemFileReadStore" jsId="dataStore"
+     url="../../data/programmingLanguages2.json"></div>
+<div dojoType="dijit.tree.ForestStoreModel" jsId="model" store="dataStore"
+     query="{type:'category'}"></div>
+<div dojoType="dijit.Tree" model="model" showRoot=false></div>
+</body>
+</html>

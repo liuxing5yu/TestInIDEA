@@ -1,0 +1,37 @@
+<html>
+<head><title>Fun with ContentPane!</title>
+
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <link rel="stylesheet" type="text/css" href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css"/>
+
+    <script djConfig="parseOnLoad:true" type="text/javascript" src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+
+    <script type="text/javascript">
+        dojo.require("dijit.Tree");
+        dojo.require("dojo.data.ItemFileWriteStore");
+        dojo.require("dijit._tree.dndSource");
+        dojo.require("dojo.parser");
+
+
+        dojo.addOnLoad(function () {
+            //wire up the checkItemAcceptance handler...
+            dijit.byId("tree").checkItemAcceptance = function (target, source) {
+                //convert the target (DOM node) to a tree node and
+                //then get the  item out of it
+                var item = dijit.getEnclosingWidget(target).item;
+
+                //do not allow dropping onto the top (fabricated) level and
+                //do not allow dropping onto items, only categories
+                return (item.id != "root" && item.type == "category");
+            }
+
+        });
+    </script>
+</head>
+<body class="tundra">
+<div dojoType="dojo.data.ItemFileWriteStore" jsId="dataStore" url="../../data/programmingLanguages2.json"></div>
+<div dojoType="dijit.tree.ForestStoreModel" jsId="model" store="dataStore" query="{type:'category'}" rootId="root"
+     rootLabel="Programming Languages"></div>
+<div id="tree" dojoType="dijit.Tree" model="model" dndController="dijit._tree.dndSource"></div>
+</body>
+</html>

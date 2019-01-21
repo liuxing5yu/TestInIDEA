@@ -1,0 +1,68 @@
+<html>
+<head>
+    <title>Fun with Toolbar!</title>
+
+    <link rel="stylesheet" type="text/css"
+          href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css"/>
+
+    <script
+            type="text/javascript"
+            src="../../js/dojo/1.14.2/dojo/dojo.js"
+            djConfig="parseOnLoad:true,isDebug:true">
+    </script>
+
+    <script type="text/javascript">
+        dojo.require("dojo.parser");
+        dojo.require("dijit.Menu");
+    </script>
+</head>
+<body class="tundra">
+<!-- right click in here to get the contextual menu -->
+<div id="context" style="background:#eee; height:300px; width:300px;"></div>
+
+<!--
+<div dojoType="dijit.Menu" targetNodeIds="context" style="display:none">
+    <div dojoType="dijit.MenuItem">foo
+        <script type="dojo/method" event="onClick" args="evt">
+                console.log("foo");
+            </script>
+    </div>
+    <div dojoType="dijit.MenuItem">bar
+        <script type="dojo/method" event="onClick" args="evt">
+                console.log("bar");
+            </script>
+    </div>
+    <div dojoType="dijit.MenuItem">baz
+        <script type="dojo/method" event="onClick" args="evt">
+                console.log("baz");
+            </script>
+    </div>
+</div>
+-->
+
+<div dojoType="dijit.Menu" targetNodeIds="context" style="display:none" contextualMenuForWindow="true">
+    <div dojoType="dijit.MenuItem">foo
+        <script type="dojo/method" event="onClick" args="evt">
+            console.log("foo");
+        </script>
+    </div>
+    <div dojoType="dijit.MenuItem">bar
+        <script type="dojo/method" event="onClick" args="evt">
+            console.log("bar");
+        </script>
+    </div>
+    <div dojoType="dijit.PopupMenuItem">
+        <span>baz</span>
+        <div dojoType="dijit.Menu">
+            <!-- define onClick handlers as needed for each item -->
+            <div dojoType="dijit.MenuItem">yabba</div>
+            <div dojoType="dijit.MenuItem">dabba</div>
+            <div dojoType="dijit.MenuItem">doo</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

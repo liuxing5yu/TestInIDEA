@@ -1,0 +1,70 @@
+<html>
+<head>
+    <title>Fun with Toolbar!</title>
+
+    <link rel="stylesheet" type="text/css"
+          href="../../js/dojo/1.14.2/dojo/resources/dojo.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="../../js/dojo/1.14.2/dijit/themes/tundra/tundra.css"/>
+
+    <script
+            type="text/javascript"
+            src="../../js/dojo/1.14.2/dojo/dojo.js"
+            djConfig="parseOnLoad:true,isDebug:true">
+    </script>
+
+    <script type="text/javascript">
+        dojo.require("dojo.parser");
+        dojo.require("dijit.Toolbar");
+        dojo.require("dijit.form.Button");
+
+        dojo.addOnLoad(function () {
+            var bold = function () {
+                console.log("bold");
+            }
+            var italic = function () {
+                console.log("italic");
+            }
+            var underline = function () {
+                console.log("underline");
+            }
+            var superscript = function () {
+                console.log("superscript");
+            }
+            var subscript = function () {
+                console.log("subscript");
+            }
+
+            dojo.query(".dijitEditorIcon").forEach(function (x) {
+                if (dojo.hasClass(x, "dijitEditorIconBold"))
+                    dojo.connect(x.parentNode, "onclick", bold);
+                else if (dojo.hasClass(x, "dijitEditorIconItalic"))
+                    dojo.connect(x.parentNode, "onclick", italic);
+                else if (dojo.hasClass(x, "dijitEditorIconUnderline"))
+                    dojo.connect(x.parentNode, "onclick", underline);
+                else if (dojo.hasClass(x, "dijitEditorIconSubscript"))
+                    dojo.connect(x.parentNode, "onclick", superscript);
+                else if (dojo.hasClass(x, "dijitEditorIconSuperscript"))
+                    dojo.connect(x.parentNode, "onclick", subscript);
+            });
+        });
+    </script>
+</head>
+<body style="padding:100px" class="tundra">
+<div dojoType="dijit.Toolbar" style="width:175px">
+    <button dojoType="dijit.form.Button"
+            iconClass="dijitEditorIcon dijitEditorIconBold"></button>
+    <button dojoType="dijit.form.Button"
+            iconClass="dijitEditorIcon dijitEditorIconItalic"></button>
+    <button dojoType="dijit.form.Button"
+            iconClass="dijitEditorIcon dijitEditorIconUnderline"></button>
+
+    <span dojoType="dijit.ToolbarSeparator"></span>
+
+    <button dojoType="dijit.form.Button"
+            iconClass="dijitEditorIcon dijitEditorIconSubscript"></button>
+    <button dojoType="dijit.form.Button"
+            iconClass="dijitEditorIcon dijitEditorIconSuperscript"></button>
+</div>
+</body>
+</html>

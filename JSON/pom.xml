@@ -8,7 +8,8 @@
     <artifactId>json</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <dependencies><!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
@@ -22,6 +23,7 @@
             <classifier>jdk15</classifier>
         </dependency>
 
+        <!--json-lib源码-->
         <dependency>
             <groupId>net.sf.json-lib</groupId>
             <artifactId>json-lib</artifactId>

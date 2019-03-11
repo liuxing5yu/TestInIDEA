@@ -1,28 +1,80 @@
 package gson;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import org.junit.Test;
+
+import java.lang.reflect.Array;
+import java.lang.reflect.Type;
+import java.util.Arrays;
+import java.util.Collection;
 
 /**
- * @author hwj
- * @date 2018/11/16 14:35
+ * https://github.com/google/gson/blob/master/UserGuide.md#TOC-Gson-With-Maven
  */
 public class Test1 {
-	public static void main(String[] args) {
+	/**
+	 * Primitives Examples
+	 */
+	@Test
+	public void test1() {
 		// Serialization
 		Gson gson = new Gson();
-
-		gson.toJson(1);            // ==> 1
-		gson.toJson("abcd");       // ==> "abcd"
-		gson.toJson(new Long(10)); // ==> 10
-		int[] values = {1};
-		gson.toJson(values);       // ==> [1]
+		System.out.println(gson.toJson(1));            // ==> 1
+		System.out.println(gson.toJson("abcd"));       // ==> "abcd"
+		System.out.println(gson.toJson(new Long(10))); // ==> 10
+		System.out.println(gson.toJson(new int[]{1}));       // ==> [1]
 
 		// Deserialization
-		int one = gson.fromJson("1", int.class);
-		Integer two = gson.fromJson("1", Integer.class);
-		Long three = gson.fromJson("1", Long.class);
-		Boolean four = gson.fromJson("false", Boolean.class);
-		String five = gson.fromJson("\"abc\"", String.class);
-		String[] six = gson.fromJson("[\"abc\"]", String[].class);
+		int int1 = gson.fromJson("1", int.class);
+		Integer Integer1 = gson.fromJson("1", Integer.class);
+		Long Long1 = gson.fromJson("1", Long.class);
+		Boolean Boolean1 = gson.fromJson("false", Boolean.class);
+		String String1 = gson.fromJson("\"abc\"", String.class);
+		String[] StringArr1 = gson.fromJson("[abc]", String[].class);
+
+		System.out.println(int1);
+		System.out.println(Integer1);
+		System.out.println(Long1);
+		System.out.println(Boolean1);
+		System.out.println(String1);
+		System.out.println(Arrays.toString(StringArr1));
+	}
+
+	/**
+	 * Array Examples
+	 */
+	@Test
+	public void test2() {
+		Gson gson = new Gson();
+		int[] ints = {1, 2, 3, 4, 5};
+		String[] strings = {"abc", "def", "ghi"};
+
+		// Serialization
+		System.out.println(gson.toJson(ints));     // ==> [1,2,3,4,5]
+		System.out.println(gson.toJson(strings));  // ==> ["abc", "def", "ghi"]
+
+		// Deserialization
+		int[] ints2 = gson.fromJson("[1,2,3,4,5]", int[].class);
+		// ==> ints2 will be same as ints
+		System.out.println(Arrays.toString(ints2));
+	}
+
+	/**
+	 * Collections Examples
+	 */
+	@Test
+	public void test3() {
+		Gson gson = new Gson();
+		Collection<Integer> ints = Lists.immutableList(1, 2, 3, 4, 5);
+
+		// Serialization
+		String json = gson.toJson(ints);  // ==> json is [1,2,3,4,5]
+
+		// Deserialization
+		Type collectionType = new TypeToken<Collection<Integer>>() {
+		}.getType();
+		Collection<Integer> ints2 = gson.fromJson(json, collectionType);
+		// ==> ints2 is same as ints
 	}
 }

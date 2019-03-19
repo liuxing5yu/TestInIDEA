@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.example.mapper.UserInfoMapper2">
+
+    <select id="selectUserInfo" resultType="org.mybatis.example.bean.UserInfo">
+        SELECT * FROM USER_INFO WHERE userid = #{id, jdbcType=VARCHAR} <!--and username = #{name, jdbcType=VARCHAR}-->
+    </select>
+
+    <select id="selectUserInfo2" resultType="org.mybatis.example.bean.UserInfo">
+        SELECT * FROM USER_INFO WHERE userid = #{id, jdbcType=VARCHAR} and username = #{name, jdbcType=VARCHAR}
+    </select>
+</mapper>

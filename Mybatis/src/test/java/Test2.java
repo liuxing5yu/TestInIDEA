@@ -11,7 +11,9 @@ import org.mybatis.example.mapper.UserInfoMapper;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author hwj
@@ -34,7 +36,7 @@ public class Test2 {
 	}
 
 	/**
-	 *
+	 *测试参数为List
 	 */
 	@Test
 	public void test1() {
@@ -55,6 +57,19 @@ public class Test2 {
 		list.add("batchid-220");
 		list.add("batchid-330");
 		List<UserInfo> userInfos = userInfoMapper.selectList2(list, "batchname-111");
+		System.out.println(userInfos);
+	}
+
+	/**
+	 * 测试参数为Map
+	 */
+	@Test
+	public void test3(){
+		UserInfoMapper userInfoMapper = session.getMapper(UserInfoMapper.class);
+		Map<String, String> map = new HashMap<>();
+		map.put("userid","batchid-00");
+		map.put("username","batchname-01");
+		List<UserInfo> userInfos = userInfoMapper.selectList3(map);
 		System.out.println(userInfos);
 	}
 }

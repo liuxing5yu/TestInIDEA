@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试JSONP</title>
+    <script src="../resource/jquery/jquery.js"></script>
+    <script>
+        $(function () {
+            $("#btn0").click(function () {
+                $.ajax({
+                    url: 'http://localhost:63342/TestInIDEA/Html/html/1.html',
+                    type: 'GET',
+                    success: function (data) {
+                        showData(data);
+                    }
+                });
+            });
+
+            $("#btn1").click(function () {
+                    $.ajax({
+                        url: 'http://localhost:8082/jsonp/1.json',
+                        type: 'GET',
+                        success: function (data) {
+                            showData(data);
+                        }
+                    });
+                }
+            );
+
+            $("#btn2").click(function () {
+                //向头部输入一个脚本，该脚本发起一个跨域请求
+                $("head").append("<script src='http://localhost:8082/jsonp/2.json?callback=showData'><\/script>");
+            });
+
+            $("#btn3").click(function () {
+                $.ajax({
+                    url: "http://localhost:8082/jsonp/2.json",
+                    type: "GET",
+                    dataType: "jsonp", //指定服务器返回的数据类型
+                    jsonp: "callback",   //指定参数名称
+                    jsonpCallback: "showData",  //指定回调函数名称
+                    success: function (data) {
+                        //showData(data);
+                    }
+                });
+            });
+
+            $("#btn4").click(function () {
+                $.ajax({
+                    url: "http://localhost:8082/jsonp/2.json",
+                    type: "POST",
+                    dataType: "jsonp", //指定服务器返回的数据类型
+                    jsonp: "callback",   //指定参数名称
+                    jsonpCallback: "showData",  //指定回调函数名称
+                    success: function (data) {
+                        //showData(data);
+                    }
+                });
+            });
+        });
+
+        /**
+         * 显示数据
+         */
+        function showData(data) {
+            if (typeof data == "object") {
+                $("#div1").text(JSON.stringify(data));
+            } else {
+                $("#div1").text(data);
+            }
+        }
+    </script>
+</head>
+<body>
+<div style="width: 100%">
+    <button id="btn0">请求自身</button>
+    <button id="btn1">直接发起跨域请求，失败</button>
+    <button id="btn2">通过向head标签里插入一个script标签进行跨域请求，成功</button>
+    <button id="btn3">jQuery进行跨域请求，成功</button>
+    <button id="btn4">jQuery进行跨域请求，使用POST请求，jQuery会转为使用GET，成功</button>
+</div>
+<div style="width: 100%" id="div1"></div>
+</body>
+</html>

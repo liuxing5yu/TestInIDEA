@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试事件传播</title>
+    <script src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
+    <script>
+        dojo.addOnLoad(function () {
+            dojo.connect(dojo.byId("d1"),"onclick",function(){console.log("d1 onclick...");});
+            dojo.connect(dojo.byId("d2"),"onclick",function(event){
+                console.log("d2 onclick...");
+                // dojo.stopEvent(event);
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="d1">
+    这里是d1
+    <div id="d2">这里是d2</div>
+</div>
+</body>
+</html>

@@ -6,17 +6,17 @@
     <script src="../../js/dojo/1.14.2/dojo/dojo.js"></script>
     <script>
         dojo.addOnLoad(function () {
-            var handle = dojo.connect(dojo.byId("d1"), "onclick", function () {
-                console.log("d1...");
-                dojo.disconnect(handle);
-            });
+            dojo.xhr("GET", {
+                url: 'http://localhost:63342/TestInIDEA/DOJO/html/main/1.html',
+                handle: function (loadOrError, response, ioArgs) {
 
-            console.log(dojo.query("div#d3"));
+                }
+            });
         });
     </script>
 </head>
 <body>
-<div id="d1">A div with id=d1</div>
+<div id="d1" attr1="val1">A div with id=d1</div>
 <div id="d2">A div with id=d2</div>
 <div id="d3">Another div with id=d3</div>
 <div id="d4" class="ac bc cc">A div with id=d4.
@@ -25,8 +25,18 @@
         The span's id is s1.
     </span>
 </div>
-<form name="foo" action="">
-    A form with name="foo"
+<form id="register">
+
+    <input type="text" name="first" value="Foo">
+    <input type="button" name="middle" value="Baz" disabled>
+    <input type="text" name="last" value="Bar">
+
+    <select type="select" multiple name="favorites" size="5">
+        <option value="red">red</option>
+        <option value="green" selected>green</option>
+        <option value="blue" selected>blue</option>
+    </select>
+
 </form>
 <div id="foo">
     A div with id=foo

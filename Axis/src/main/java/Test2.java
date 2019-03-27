@@ -1,7 +1,13 @@
 import org.apache.axis.client.Call;
 import org.apache.axis.client.Service;
+import org.apache.axis.encoding.XMLType;
+import org.apache.axis.encoding.ser.BeanDeserializerFactory;
+import org.apache.axis.encoding.ser.BeanSerializerFactory;
 
 import javax.xml.namespace.QName;
+import javax.xml.rpc.ParameterMode;
+import javax.xml.rpc.encoding.TypeMapping;
+import javax.xml.rpc.encoding.TypeMappingRegistry;
 
 /**
  * @author hwj
@@ -23,7 +29,7 @@ public class Test2 {
 			//调用接口的参数的名字
 			String[] paramNames = {"idcardno"};
 			//调用接口的参数的值
-			String[] paramValues = {"320523194408305137"};
+			String[] paramValues = {"320523192902240018"};
 
 			Service service = new Service();
 			Call call = (Call) service.createCall();
@@ -32,21 +38,25 @@ public class Test2 {
 			call.setTargetEndpointAddress(new java.net.URL(endpoint));  //设置目标接口的地址
 			call.setEncodingStyle(encodingStyle);//设置传入服务端的字符集格式如utf-8等
 			call.setOperationName(new QName(targetNamespace, method));// 具体调用的方法名，可以由接口提供方告诉你，也可以自己从WSDL中找
-			call.setUseSOAPAction(true);
-			call.addParameter(new QName(targetNamespace, paramNames[0]), org.apache.axis.encoding.XMLType.XSD_INTEGER, javax.xml.rpc.ParameterMode.IN);// 接口的参数
-			// call.setReturnType(org.apache.axis.encoding.XMLType.XSD_STRING);// 设置返回类型  ，如String
-			call.setReturnClass(java.lang.String[].class); //返回字符串数组类型
+			call.setUseSOAPAction(false);
+			call.addParameter(new QName(paramNames[0]), XMLType.XSD_STRING, ParameterMode.IN);// 接口的参数
+			//call.setReturnType(org.apache.axis.encoding.XMLType.XSD_STRING);// 设置返回类型  ，如String
+			//call.setReturnClass(java.lang.Object[].class); //返回字符串数组类型
+			call.setReturnClass(QueueInfoResult.class); //返回类型
+			// QName qn = new QName("return");
+			//call.registerTypeMapping(QueueInfoResult.class, qn, new BeanSerializerFactory(QueueInfoResult.class, qn), new BeanDeserializerFactory(QueueInfoResult.class, qn));
+
+			QName qname_queueInfoResult = new QName("queueInfoResult");//注册实体对象
+			QName qname = new QName("queueUnit");//注册实体对象
+			call.registerTypeMapping(QueueInfoResult.class, qname_queueInfoResult, new BeanSerializerFactory(QueueInfoResult.class, qname_queueInfoResult), new BeanDeserializerFactory(QueueInfoResult.class, qname_queueInfoResult));
+			call.registerTypeMapping(QueueUnit.class, qname, new BeanSerializerFactory(QueueUnit.class, qname), new BeanDeserializerFactory(QueueUnit.class, qname));
+
 			// 给方法传递参数，并且调用方法 ，如果无参，则new Obe
-			String[] result = (String[]) call.invoke(new Object[]{paramValues[0]});
-			// 打印返回值
-			System.out.println("result is " + result.toString());
-			if (result != null && result.length > 0) {
-				for (int i = 0; i < result.length; i++) {
-					System.out.println(result[i]);
-				}
-			}
+			QueueInfoResult result = (QueueInfoResult) call.invoke(new Object[]{paramValues[0]});
+			System.out.println(result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
 }

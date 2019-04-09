@@ -30,4 +30,11 @@
     <select id="selectList3" parameterType="map" resultType="org.mybatis.example.bean.UserInfo">
         SELECT * FROM USER_INFO WHERE userid = #{map.userid, jdbcType=VARCHAR} and username = #{map.username, jdbcType=VARCHAR}
     </select>
+
+    <select id="selectList4" resultType="org.mybatis.example.bean.UserInfo">
+        SELECT * FROM USER_INFO
+        <if test="id.contains('00')">
+            where userid = #{id, jdbcType=VARCHAR}
+        </if>
+    </select>
 </mapper>

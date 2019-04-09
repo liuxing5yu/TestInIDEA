@@ -10,4 +10,6 @@
     <select id="selectUserInfo2" resultType="org.mybatis.example.bean.UserInfo">
         SELECT * FROM USER_INFO WHERE userid = #{id, jdbcType=VARCHAR} and username = #{name, jdbcType=VARCHAR}
     </select>
+
+
 </mapper>

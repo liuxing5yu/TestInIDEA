@@ -21,4 +21,6 @@ public interface UserInfoMapper {
 	List<UserInfo> selectList2(@Param("list") List<String> list, @Param("name") String name);
 
 	List<UserInfo> selectList3(@Param("map") Map<String, String> map);
+
+	List<UserInfo> selectList4(@Param("id") String id);
 }

@@ -22,6 +22,7 @@ public class Test1 {
 		System.out.println(s5.hashCode());
 
 		System.out.println(s1.concat(s2));
+		System.out.println(Arrays.toString(s1.toCharArray()));
 	}
 
 	/**

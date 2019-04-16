@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class SortUtils {
 	public static void main(String[] args) {
-		int[] src = new int[] { 1, 3, 5, 7, 8, 9 };
+		int[] src = new int[]{1, 3, 5, 7, 8, 9};
 		System.out.println(binarySearch2(src, 2));
 		System.out.println(binarySearch(src, 3, 0, src.length - 1));
 	}
@@ -26,14 +26,12 @@ public class SortUtils {
 		return -1;
 	}
 
-	/** 
-	 * * 二分查找算法 * * 
-	 *  
-	 * @param srcArray 
-	 *            有序数组 * 
-	 * @param des 
-	 *            查找元素 * 
-	 * @return des的数组下标，没找到返回-1 
+	/**
+	 * * 二分查找算法 * *
+	 *
+	 * @param srcArray 有序数组 *
+	 * @param des      查找元素 *
+	 * @return des的数组下标，没找到返回-1
 	 */
 	public static int binarySearch(int[] srcArray, int des) {
 		int low = 0;
@@ -51,14 +49,15 @@ public class SortUtils {
 		return -1;
 	}
 
-	/**   
-	*二分查找特定整数在整型数组中的位置(递归)   
-	*@paramdataset   
-	*@paramdata   
-	*@parambeginIndex   
-	*@paramendIndex   
-	*@returnindex   
-	*/
+	/**
+	 * 二分查找特定整数在整型数组中的位置(递归)
+	 *
+	 * @paramdataset
+	 * @paramdata
+	 * @parambeginIndex
+	 * @paramendIndex
+	 * @returnindex
+	 */
 	public static int binarySearch(int[] dataset, int data, int beginIndex, int endIndex) {
 		int midIndex = (beginIndex + endIndex) / 2;
 		if (data < dataset[beginIndex] || data > dataset[endIndex] || beginIndex > endIndex) {
@@ -75,6 +74,7 @@ public class SortUtils {
 
 	/**
 	 * 冒泡排序
+	 *
 	 * @param list
 	 */
 	public <T extends Comparable<T>> void sort(T[] list) {
@@ -94,13 +94,14 @@ public class SortUtils {
 
 	@Test
 	public void testBubbleSort() {
-		int[] arr = new int[] { 1, 3, 2, 5, 4 };
+		int[] arr = new int[]{1, 3, 2, 5, 4};
 		bubbleSort(arr);
 		System.out.println(Arrays.toString(arr));
 	}
 
 	/**
 	 * 冒泡排序
+	 *
 	 * @param arr
 	 */
 	public void bubbleSort(int[] arr) {
@@ -116,4 +117,21 @@ public class SortUtils {
 		}
 	}
 
+	/**
+	 * 冒泡排序
+	 */
+	@Test
+	public void testBubbleSort2() {
+		int[] arr = {1, 5, 3, 2, 4, 6, 5};
+		for (int i = 0; i < arr.length - 1; i++) {
+			for (int j = 0; j < arr.length - i - 1; j++) {
+				if (arr[j] < arr[j + 1]) {
+					int temp = arr[j];
+					arr[j] = arr[j + 1];
+					arr[j + 1] = temp;
+				}
+			}
+		}
+		System.out.println(Arrays.toString(arr));
+	}
 }
